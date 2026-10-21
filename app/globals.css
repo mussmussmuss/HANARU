@@ -83,6 +83,16 @@ html, body {
 .header h1 { font-size: 16px; margin: 0; }
 .header p { font-size: 12px; margin: 2px 0 0; color: var(--muted); }
 
+.m01-bar {
+  margin: 0;
+  padding: 6px 16px;
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
 .messages {
   flex: 1;
   overflow-y: auto;
