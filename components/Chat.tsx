@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { parseAnswer, questionLang, type QuestionLang } from "@/lib/answer";
 import CardSheet, { type CardMeta } from "@/components/CardSheet";
@@ -282,6 +283,9 @@ export default function Chat({ cardCount, cardMeta }: { cardCount: number; cardM
         <p className="notice">
           Bản demo · 데모 버전 — {cardCount} quy định đã kiểm tra · 검수된 규정 {cardCount}개 기준
         </p>
+        <Link className="form-link" href="/form/visa">
+          Điền đơn xin visa (bản nháp) · 사증발급신청서 초안 작성 →
+        </Link>
         {messages.map((m, i) => {
           if (m.role === "user") return <div key={i} className="bubble user">{m.text}</div>;
           if (m.role === "notice") {

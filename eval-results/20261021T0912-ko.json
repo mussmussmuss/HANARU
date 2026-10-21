@@ -1,0 +1,75 @@
+[
+ {
+  "q": {
+   "id": "E53",
+   "type": "직접",
+   "q_ko": "신청서를 베트남어로 써도 돼요?",
+   "q_vi": "Em viết đơn bằng tiếng Việt được không?",
+   "profile": {},
+   "cards": [
+    "M04"
+   ],
+   "must": [
+    "한글 또는 영문으로만 기재"
+   ],
+   "must_not": [],
+   "ask": []
+  },
+  "chat": {
+   "text": "<vi>\nKhông được bạn ơi. Đơn xin cấp visa (mẫu số 17) phải điền toàn bộ câu trả lời bằng tiếng Hàn hoặc tiếng Anh. Thông tin phải đúng sự thật, đầy đủ và chính xác. Đơn tổng hợp (mẫu số 34) nộp tại cơ quan xuất nhập cảnh sau khi bạn sang Hàn Quốc cũng phải viết bằng tiếng Hàn hoặc tiếng Anh.\n\nBạn có thể vừa xem giải thích bằng tiếng Việt vừa điền bằng tiếng Anh. Nếu muốn làm bản nháp đơn xin visa (mẫu số 17), bạn bấm vào đường link \"사증발급신청서 초안 작성\" ở phía trên khung chat rồi tự nhập thông tin. Thông tin bạn nhập chỉ lưu trên thiết bị của bạn. Chức năng làm bản nháp đơn tổng hợp (mẫu số 34) hiện vẫn đang được chuẩn bị. Mình không thể nộp đơn thay bạn, nên bạn cần tự kiểm tra lần cuối rồi tự nộp nhé.\n\nQuyết định cuối cùng thuộc về cơ quan đại diện (visa) hoặc cơ quan xuất nhập cảnh (lưu trú).\n</vi>\n<ko>\n아니요, 베트남어로는 쓸 수 없어요. 사증발급신청서(별지 17호)는 모든 답변을 한글이나 영문으로 써야 해요. 내용은 사실대로 빠짐없이 정확하게 적어야 해요. 한국에 온 뒤 출입국에 내는 통합신청서(별지 34호)도 한글이나 영문으로 써요.\n\n베트남어 설명을 보면서 영어로 채우면 돼요. 사증발급신청서(별지 17호) 초안이 필요하면 채팅 화면 위의 \"사증발급신청서 초안 작성\" 링크를 눌러 직접 입력해서 만들 수 있어요. 입력한 내용은 학생 기기에만 저장돼요. 통합신청서(별지 34호) 초안 기능은 아직 준비 중이에요. 신청서를 대신 내 드릴 수는 없어서, 마지막 확인과 제출은 직접 해야 해요.\n\n최종 결정은 공관(비자)이나 출입국(체류)이 해요.\n</ko>\n<cards>M04,M01</cards>",
+   "cards": [
+    "M04",
+    "M01"
+   ],
+   "unknownCards": [],
+   "refused": false,
+   "toolLog": [],
+   "usage": [
+    {
+     "input": 94,
+     "cacheRead": 43774,
+     "cacheWrite": 0,
+     "output": 1037
+    }
+   ]
+  },
+  "grade": {
+   "must": [
+    {
+     "item": "한글 또는 영문으로만 기재",
+     "evidence": "베트남어 답과 한국어 답 모두 사증발급신청서는 한글이나 영문으로만 쓴다고 명시. 카드 M04와 일치",
+     "pass": true
+    }
+   ],
+   "must_not": [],
+   "asked": [],
+   "stated_number_before_asking": false,
+   "unsupported_claims": [
+    {
+     "claim": "입력한 내용은 학생 기기에만 저장된다",
+     "why": "규정 카드에 앱의 데이터 저장 방식에 대한 근거가 없음"
+    },
+    {
+     "claim": "사증발급신청서 초안 작성 링크가 채팅 화면 위에 있다",
+     "why": "규정 카드에 앱 화면 구성에 대한 근거가 없음"
+    },
+    {
+     "claim": "통합신청서(별지 34호) 초안 기능은 준비 중이다",
+     "why": "규정 카드에 해당 기능 준비 상태에 대한 근거가 없음"
+    },
+    {
+     "claim": "통합신청서는 한국에 온 뒤 출입국에 낸다",
+     "why": "카드 M04에는 제출 시점 언급이 없음. 다만 S12 근거가 있을 수 있으나 카드 내용으로 확인되지 않음"
+    }
+   ],
+   "vi_ko_consistent": true,
+   "comment": "핵심 must는 충족. 다만 앱 기능·저장 방식·제출 시점 등 카드에 없는 사실을 말해 unsupported 다수. 기준 답변은 M04 범위 내에서 짧게 해야 함."
+  },
+  "pass": true,
+  "formatOk": true,
+  "citedExpected": true,
+  "chatCost": 0.029870800000000003,
+  "gradeCost": 0.00074922,
+  "ms": 14138
+ }
+]

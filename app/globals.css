@@ -367,3 +367,58 @@ html, body {
   .summary-doc li { margin-bottom: 2pt; }
   .summary-cards, .summary-doc footer { font-size: 8.5pt; }
 }
+
+/* 서식 초안 입력 화면 (/form/visa) */
+.form-page { max-width: 760px; margin: 0 auto; padding: 0 16px 140px; background: var(--bg); min-height: 100dvh; }
+.form-header { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; gap: 12px; padding: 12px 0; background: var(--bg); border-bottom: 1px solid var(--border); }
+.form-header h1 { font-size: 17px; margin: 0; }
+.form-header p { font-size: 12px; margin: 2px 0 0; color: var(--muted); }
+.form-back { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); color: var(--text); text-decoration: none; flex: none; }
+.form-intro { margin: 14px 0; font-size: 13px; line-height: 1.5; }
+.form-intro p { margin: 0 0 8px; }
+.form-intro .ko, .form-sign-note .ko { display: block; color: var(--muted); }
+.form-privacy { padding: 8px 10px; border-radius: 10px; background: var(--primary-soft); }
+.form-section { margin: 10px 0; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); overflow: hidden; }
+.form-section > summary { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 12px 14px; font-weight: 600; font-size: 15px; cursor: pointer; list-style: none; }
+.form-section > summary::-webkit-details-marker { display: none; }
+.form-section > summary .ko { font-weight: 400; color: var(--muted); font-size: 13px; }
+.form-section[open] > summary { border-bottom: 1px solid var(--border); }
+.form-count { font-size: 12px; font-weight: 500; white-space: nowrap; padding: 2px 8px; border-radius: 999px; }
+.form-count.ok { color: var(--ok); background: var(--ok-soft); }
+.form-count.warn { color: var(--warn); background: var(--warn-soft); }
+.field { padding: 12px 14px; border-bottom: 1px solid var(--border); }
+.field:last-child { border-bottom: none; }
+.field.missing { box-shadow: inset 3px 0 0 var(--warn); }
+.field-head { display: flex; gap: 8px; margin-bottom: 6px; font-size: 13px; line-height: 1.4; }
+.field-no { flex: none; font-weight: 700; color: var(--primary); }
+.field-label .ko { color: var(--muted); }
+.req { color: var(--danger); }
+.field input, .field select { width: 100%; font: inherit; font-size: 16px; padding: 9px 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); color: var(--text); }
+.field-out { margin: 6px 0 0; font-size: 12px; color: var(--muted); }
+.field-out b { color: var(--text); font-weight: 600; }
+.fit-chip { display: inline-block; margin-top: 6px; font-size: 11px; padding: 2px 8px; border-radius: 999px; }
+.fit-chip.ok { color: var(--ok); background: var(--ok-soft); }
+.fit-chip.warn { color: var(--warn); background: var(--warn-soft); }
+.fit-chip.danger { color: var(--danger); background: var(--warn-soft); }
+.choice { display: flex; flex-wrap: wrap; gap: 6px; }
+.choice button { display: flex; flex-direction: column; align-items: flex-start; border: 1px solid var(--border); background: var(--surface); color: var(--text); border-radius: 10px; padding: 7px 10px; font: inherit; font-size: 14px; cursor: pointer; }
+.choice button small { font-size: 11px; color: var(--muted); }
+.choice button.on { border-color: var(--primary); background: var(--primary-soft); color: var(--primary); }
+.table-row { border: 1px dashed var(--border); border-radius: 10px; padding: 8px 10px; margin-bottom: 8px; display: grid; gap: 6px; }
+.table-row-head { display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; color: var(--muted); }
+.table-row-head button { border: none; background: none; color: var(--muted); cursor: pointer; font-size: 14px; }
+.table-cell { display: grid; gap: 3px; font-size: 12px; }
+.table-cell .ko { color: var(--muted); }
+.period { display: flex; align-items: center; gap: 6px; }
+.period input { min-width: 0; }
+.add-row { border: 1px dashed var(--border); background: none; color: var(--primary); border-radius: 10px; padding: 7px 10px; font: inherit; font-size: 13px; cursor: pointer; }
+.form-sign-note { font-size: 13px; line-height: 1.5; margin: 14px 0; }
+.form-footer { position: fixed; left: 0; right: 0; bottom: 0; z-index: 5; padding: 10px 16px 14px; background: var(--surface); border-top: 1px solid var(--border); }
+.form-footer > * { max-width: 728px; margin-left: auto; margin-right: auto; }
+.form-warn { margin: 0 auto 6px; font-size: 12px; color: var(--warn); }
+.form-note { margin: 0 auto 6px; font-size: 12px; color: var(--muted); }
+.form-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.form-actions button, .form-actions .button { border: 1px solid var(--border); background: var(--surface); color: var(--text); border-radius: 12px; padding: 10px 14px; font: inherit; font-size: 14px; cursor: pointer; text-decoration: none; }
+.form-actions .primary { flex: 1; background: var(--primary); border-color: var(--primary); color: #fff; font-weight: 600; }
+.form-actions button:disabled { opacity: 0.5; cursor: default; }
+.form-link { display: block; margin: 8px auto 0; text-align: center; font-size: 12px; color: var(--primary); }
