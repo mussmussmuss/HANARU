@@ -1,0 +1,1214 @@
+[
+ {
+  "id": "E01",
+  "type": "직접",
+  "q_ko": "한국 대학 학부에 가려면 무슨 비자예요?",
+  "q_vi": "Muốn học đại học ở Hàn thì xin visa gì?",
+  "profile": {},
+  "cards": [
+   "P01"
+  ],
+  "must": [
+   "D-2",
+   "학사는 D-2-2"
+  ],
+  "must_not": [
+   "D-4"
+  ],
+  "ask": []
+ },
+ {
+  "id": "E02",
+  "type": "되묻기",
+  "q_ko": "재정 증명은 얼마나 있어야 해요?",
+  "q_vi": "Cần chứng minh tài chính bao nhiêu tiền?",
+  "profile": {},
+  "cards": [
+   "P11",
+   "P12",
+   "P13"
+  ],
+  "must": [],
+  "must_not": [
+   "2,000만원이라고 단정"
+  ],
+  "ask": [
+   "과정(학위/어학연수/교환)",
+   "학교 소재지(수도권/지방)"
+  ]
+ },
+ {
+  "id": "E03",
+  "type": "직접",
+  "q_ko": "부산에 있는 대학 학사과정이에요. 잔고는 얼마나, 얼마 동안 넣어야 해요?",
+  "q_vi": "Em học đại học ở Busan. Cần số dư bao nhiêu và gửi bao lâu?",
+  "profile": {
+   "과정": "D-2-2",
+   "소재지": "지방"
+  },
+  "cards": [
+   "P11"
+  ],
+  "must": [
+   "1,600만원",
+   "3개월"
+  ],
+  "must_not": [
+   "2,000만원"
+  ],
+  "ask": []
+ },
+ {
+  "id": "E04",
+  "type": "직접",
+  "q_ko": "서울 대학 어학당에 가요. 통장에 얼마 있어야 돼요?",
+  "q_vi": "Em học tiếng ở trường tại Seoul. Trong sổ cần bao nhiêu?",
+  "profile": {
+   "과정": "D-4-1",
+   "소재지": "수도권"
+  },
+  "cards": [
+   "P12"
+  ],
+  "must": [
+   "1,000만원",
+   "6개월"
+  ],
+  "must_not": [
+   "3개월"
+  ],
+  "ask": []
+ },
+ {
+  "id": "E05",
+  "type": "직접",
+  "q_ko": "박사과정인데도 잔고를 3개월 넣어 둬야 해요?",
+  "q_vi": "Nghiên cứu sinh tiến sĩ cũng phải gửi số dư 3 tháng ạ?",
+  "profile": {
+   "과정": "D-2-4"
+  },
+  "cards": [
+   "P11"
+  ],
+  "must": [
+   "D-2-4~D-2-8은 예치기간 3개월 불필요"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E06",
+  "type": "직접",
+  "q_ko": "삼촌 통장을 제 이름으로 넘겨받아서 잔고증명 내도 돼요?",
+  "q_vi": "Em dùng sổ của chú chuyển sang tên em để làm xác nhận số dư được không?",
+  "profile": {},
+  "cards": [
+   "P11"
+  ],
+  "must": [
+   "양도한 통장 불인정",
+   "적발 시 불허"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E07",
+  "type": "직접",
+  "q_ko": "잔고증명서는 언제 뗀 걸 내야 해요?",
+  "q_vi": "Giấy xác nhận số dư phải lấy khi nào?",
+  "profile": {},
+  "cards": [
+   "P10"
+  ],
+  "must": [
+   "접수일 기준 10일 이내 발급"
+  ],
+  "must_not": [
+   "30일"
+  ],
+  "ask": []
+ },
+ {
+  "id": "E08",
+  "type": "공관별",
+  "q_ko": "결핵진단서는 아무 병원에서 받아도 돼요? 저는 하노이에서 신청해요.",
+  "q_vi": "Giấy khám lao lấy ở bệnh viện nào cũng được không? Em nộp ở Hà Nội.",
+  "profile": {
+   "공관": "하노이"
+  },
+  "cards": [
+   "P08"
+  ],
+  "must": [
+   "지정병원만",
+   "하노이 지정병원 8곳"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E09",
+  "type": "직접",
+  "q_ko": "졸업증명서 영사확인은 얼마 동안 유효해요? 다낭에서 내요.",
+  "q_vi": "Hợp pháp hóa lãnh sự bằng tốt nghiệp có hiệu lực bao lâu? Em nộp ở Đà Nẵng.",
+  "profile": {
+   "공관": "다낭"
+  },
+  "cards": [
+   "P09"
+  ],
+  "must": [
+   "사증 접수일로부터 1년 이내 영사확인"
+  ],
+  "must_not": [
+   "90일"
+  ],
+  "ask": []
+ },
+ {
+  "id": "E10",
+  "type": "직접",
+  "q_ko": "졸업증명서 영사확인 유효기간은요? 호치민이에요.",
+  "q_vi": "Thời hạn hợp pháp hóa bằng tốt nghiệp thế nào? Em ở TP.HCM.",
+  "profile": {
+   "공관": "호치민"
+  },
+  "cards": [
+   "P09"
+  ],
+  "must": [
+   "사증 접수일로부터 1년 이내 영사확인(호치민)"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E11",
+  "type": "직접",
+  "q_ko": "아직 졸업 전이에요. 졸업예정증명서로 내도 돼요?",
+  "q_vi": "Em chưa tốt nghiệp. Nộp giấy dự kiến tốt nghiệp được không?",
+  "profile": {},
+  "cards": [
+   "P09"
+  ],
+  "must": [
+   "표준입학허가서 발급일 기준 졸업일로부터 1년 이내만 인정"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E12",
+  "type": "되묻기",
+  "q_ko": "어느 대사관에 신청해야 돼요?",
+  "q_vi": "Em phải nộp ở Đại sứ quán nào?",
+  "profile": {},
+  "cards": [
+   "P03"
+  ],
+  "must": [
+   "최종 졸업학교 소재지 관할 공관 원칙",
+   "비자 때문에 주소이전 시 원칙적 불허"
+  ],
+  "must_not": [
+   "특정 공관을 근거 없이 지정"
+  ],
+  "ask": [
+   "최종 졸업학교 소재지"
+  ]
+ },
+ {
+  "id": "E13",
+  "type": "직접",
+  "q_ko": "호치민에서 일하려고 이사 와서 4개월 살았어요. 호치민에 낼 수 있어요?",
+  "q_vi": "Em chuyển vào TP.HCM để đi làm được 4 tháng. Nộp ở TP.HCM được không?",
+  "profile": {
+   "거주": "4개월"
+  },
+  "cards": [
+   "P03"
+  ],
+  "must": [
+   "6개월 이상 거주자에 한하여 접수 가능",
+   "4개월은 해당 안 됨"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E14",
+  "type": "학교조회",
+  "q_ko": "충북대학교 학부에 가는데, 인증대학이에요?",
+  "q_vi": "Em vào đại học Chungbuk, trường có được chứng nhận không?",
+  "profile": {},
+  "cards": [
+   "P23",
+   "P04"
+  ],
+  "must": [
+   "충북대학교는 2025년 인증대학(학위과정)",
+   "우수 인증대학 아님"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E15",
+  "type": "학교조회",
+  "q_ko": "대구한의대학교 어학당 가려고 해요. 괜찮아요?",
+  "q_vi": "Em định học tiếng ở Đại học Daegu Haany. Có ổn không?",
+  "profile": {},
+  "cards": [
+   "P23",
+   "P04"
+  ],
+  "must": [
+   "어학연수과정은 비자정밀심사대학",
+   "학위과정은 인증대학"
+  ],
+  "must_not": [
+   "문제없다고 단정"
+  ],
+  "ask": []
+ },
+ {
+  "id": "E16",
+  "type": "직접",
+  "q_ko": "일반대학 어학연수에 가요. 대사관에 바로 비자 신청하면 돼요?",
+  "q_vi": "Em học tiếng ở trường thông thường. Nộp visa thẳng ở Đại sứ quán được không?",
+  "profile": {
+   "국적": "베트남",
+   "학교": "일반대",
+   "과정": "D-4-1"
+  },
+  "cards": [
+   "P04",
+   "P05"
+  ],
+  "must": [
+   "베트남 국적 일반대 D-4-1은 사증발급인정서로만",
+   "학교 담당자가 인정서 신청"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E17",
+  "type": "직접",
+  "q_ko": "성균관대 석사로 가요. 전자비자 돼요?",
+  "q_vi": "Em học thạc sĩ ở Sungkyunkwan. Xin visa điện tử được không?",
+  "profile": {},
+  "cards": [
+   "P06",
+   "P23"
+  ],
+  "must": [
+   "성균관대학교는 우수 인증대학",
+   "전자비자 대상"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E18",
+  "type": "직접",
+  "q_ko": "어학연수도 전자비자로 받을 수 있어요?",
+  "q_vi": "Học tiếng có xin visa điện tử được không?",
+  "profile": {},
+  "cards": [
+   "P06"
+  ],
+  "must": [
+   "어학연수(D-4-1)는 전자비자 대상 아님"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E19",
+  "type": "충돌",
+  "q_ko": "학사과정 가는데 TOPIK 몇 급 있어야 해요?",
+  "q_vi": "Học đại học cần TOPIK mấy?",
+  "profile": {},
+  "cards": [
+   "P20"
+  ],
+  "must": [
+   "비자심사강화대학 입학 시 TOPIK 4급 의무",
+   "인증대·일반대는 의무 아님(가점)"
+  ],
+  "must_not": [
+   "모든 학교 필수라고 단정"
+  ],
+  "ask": [
+   "학교 등급"
+  ]
+ },
+ {
+  "id": "E20",
+  "type": "충돌",
+  "q_ko": "전문대 가려는데 하노이 대사관 기준 TOPIK 몇 급이에요?",
+  "q_vi": "Em vào cao đẳng, theo Đại sứ quán Hà Nội cần TOPIK mấy?",
+  "profile": {
+   "공관": "하노이",
+   "과정": "D-2-1"
+  },
+  "cards": [
+   "P20"
+  ],
+  "must": [
+   "하노이 안내문은 3급",
+   "매뉴얼·호치민·다낭은 2급",
+   "확인 필요"
+  ],
+  "must_not": [
+   "한쪽 기준만 단정"
+  ],
+  "ask": []
+ },
+ {
+  "id": "E21",
+  "type": "직접",
+  "q_ko": "온라인 세종학당 수료증도 한국어 증빙으로 돼요?",
+  "q_vi": "Chứng chỉ Sejong online có dùng làm chứng minh tiếng Hàn được không?",
+  "profile": {},
+  "cards": [
+   "P20"
+  ],
+  "must": [
+   "온라인 세종학당 수료증 제외"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E22",
+  "type": "직접",
+  "q_ko": "우수인증대 어학연수인데 재정 서류 안 내도 되죠?",
+  "q_vi": "Học tiếng ở trường chứng nhận ưu tú thì không cần nộp giấy tờ tài chính đúng không?",
+  "profile": {},
+  "cards": [
+   "P12",
+   "P16"
+  ],
+  "must": [
+   "D-4는 우수인증대여도 학력·재정 서류 제출"
+  ],
+  "must_not": [
+   "안 내도 된다"
+  ],
+  "ask": []
+ },
+ {
+  "id": "E23",
+  "type": "공관별",
+  "q_ko": "비자 결과 나오는 데 얼마나 걸려요? 다낭이에요.",
+  "q_vi": "Bao lâu thì có kết quả visa? Em nộp ở Đà Nẵng.",
+  "profile": {
+   "공관": "다낭"
+  },
+  "cards": [
+   "P21"
+  ],
+  "must": [
+   "근무일 기준 15일",
+   "연장될 수 있음"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E24",
+  "type": "직접",
+  "q_ko": "비자 거절됐어요. 언제 다시 신청할 수 있어요?",
+  "q_vi": "Em bị từ chối visa. Khi nào nộp lại được?",
+  "profile": {},
+  "cards": [
+   "P22"
+  ],
+  "must": [
+   "불허일로부터 3개월 후"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E25",
+  "type": "공관별",
+  "q_ko": "교환학생 1년인데 체재비 얼마 필요해요? 하노이예요.",
+  "q_vi": "Em đi trao đổi 1 năm, cần bao nhiêu phí sinh hoạt? Em ở Hà Nội.",
+  "profile": {
+   "공관": "하노이",
+   "과정": "D-2-6"
+  },
+  "cards": [
+   "P13"
+  ],
+  "must": [
+   "월 기준금액 × 12",
+   "하노이 월 1,069,654원",
+   "매년 갱신되니 최신 금액 확인"
+  ],
+  "must_not": [
+   "1,148,166원을 하노이 기준으로 안내"
+  ],
+  "ask": []
+ },
+ {
+  "id": "E26",
+  "type": "자료부족",
+  "q_ko": "베트남 은행 잔고증명서는 아무 형식이나 돼요?",
+  "q_vi": "Giấy xác nhận số dư ngân hàng Việt Nam loại nào cũng được à?",
+  "profile": {},
+  "cards": [
+   "P15"
+  ],
+  "must": [
+   "매뉴얼: 지급유보방식 별도 유학경비 잔고증명서",
+   "법무부 사증발급 안내매뉴얼 확인 안내"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E27",
+  "type": "직접",
+  "q_ko": "부모님이 안 계시면 누가 재정보증 해요?",
+  "q_vi": "Nếu không có bố mẹ thì ai bảo lãnh tài chính?",
+  "profile": {},
+  "cards": [
+   "P14"
+  ],
+  "must": [
+   "부모 외 가족 가능",
+   "가족관계 서류 번역공증"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E28",
+  "type": "직접",
+  "q_ko": "한국 도착하고 외국인등록은 언제까지 해야 돼요?",
+  "q_vi": "Đến Hàn rồi thì phải đăng ký người nước ngoài trong bao lâu?",
+  "profile": {},
+  "cards": [
+   "A01"
+  ],
+  "must": [
+   "입국일부터 90일 이내"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E29",
+  "type": "직접",
+  "q_ko": "외국인등록 할 때 뭐 가져가요?",
+  "q_vi": "Khi đăng ký người nước ngoài cần mang gì?",
+  "profile": {},
+  "cards": [
+   "A01",
+   "A09"
+  ],
+  "must": [
+   "신청서, 여권, 사진, 재학증명서, 체류지 입증서류, 수수료",
+   "재정서류 불필요",
+   "방문예약"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E30",
+  "type": "직접",
+  "q_ko": "이사했는데 신고해야 돼요?",
+  "q_vi": "Em chuyển nhà rồi, có phải khai báo không?",
+  "profile": {},
+  "cards": [
+   "A02"
+  ],
+  "must": [
+   "15일 이내 체류지 변경신고",
+   "주민센터 또는 출입국",
+   "하이코리아 온라인 가능"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E31",
+  "type": "충돌",
+  "q_ko": "여권을 새로 받았어요. 신고 기한이 언제예요?",
+  "q_vi": "Em mới đổi hộ chiếu. Hạn khai báo là khi nào?",
+  "profile": {},
+  "cards": [
+   "A03"
+  ],
+  "must": [
+   "15일 이내(2026 매뉴얼)",
+   "보수적으로 15일 안내"
+  ],
+  "must_not": [
+   "45일만 안내"
+  ],
+  "ask": []
+ },
+ {
+  "id": "E32",
+  "type": "직접",
+  "q_ko": "비자 연장은 언제부터 신청할 수 있어요?",
+  "q_vi": "Khi nào thì có thể xin gia hạn visa?",
+  "profile": {},
+  "cards": [
+   "A04"
+  ],
+  "must": [
+   "만료 4개월 전부터 만료일까지"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E33",
+  "type": "직접",
+  "q_ko": "휴학하면 비자 연장 돼요?",
+  "q_vi": "Nếu bảo lưu thì có gia hạn visa được không?",
+  "profile": {},
+  "cards": [
+   "A04",
+   "A05"
+  ],
+  "must": [
+   "학업 중단(휴학) 시 연장 제한",
+   "질병·사고 등 예외"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E34",
+  "type": "직접",
+  "q_ko": "어학연수생인데 연장할 때 베트남 부모님 통장으로 재정 증명해도 돼요?",
+  "q_vi": "Em là học viên tiếng, khi gia hạn dùng sổ của bố mẹ ở Việt Nam được không?",
+  "profile": {
+   "과정": "D-4-1"
+  },
+  "cards": [
+   "A05"
+  ],
+  "must": [
+   "국내 본인계좌 예치금만 인정"
+  ],
+  "must_not": [
+   "부모 통장 가능"
+  ],
+  "ask": []
+ },
+ {
+  "id": "E35",
+  "type": "직접",
+  "q_ko": "어학당 끝나고 같은 학교 학부에 들어가요. 베트남 갔다 와야 해요?",
+  "q_vi": "Học tiếng xong em vào đại học cùng trường. Có phải về Việt Nam không?",
+  "profile": {},
+  "cards": [
+   "A07"
+  ],
+  "must": [
+   "국내에서 D-2로 체류자격 변경 가능",
+   "수수료 10만원"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E36",
+  "type": "직접",
+  "q_ko": "방학에 베트남 다녀오는데 재입국허가 받아야 해요?",
+  "q_vi": "Nghỉ hè em về Việt Nam, có cần xin phép tái nhập cảnh không?",
+  "profile": {},
+  "cards": [
+   "A08"
+  ],
+  "must": [
+   "등록 후 출국 1년 이내 재입국은 면제",
+   "체류기간 범위 내"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E37",
+  "type": "직접",
+  "q_ko": "어학당 다니다가 다른 대학 어학당으로 옮길 수 있어요?",
+  "q_vi": "Đang học tiếng em chuyển sang viện ngôn ngữ trường khác được không?",
+  "profile": {},
+  "cards": [
+   "A06"
+  ],
+  "must": [
+   "원칙: 출국 후 새 사증",
+   "예외: 어학원 폐쇄, TOPIK 3급 이상+정당한 사유"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E38",
+  "type": "되묻기",
+  "q_ko": "아르바이트 일주일에 몇 시간 할 수 있어요?",
+  "q_vi": "Em được làm thêm bao nhiêu giờ một tuần?",
+  "profile": {},
+  "cards": [
+   "W03",
+   "W04"
+  ],
+  "must": [],
+  "must_not": [
+   "숫자를 바로 단정"
+  ],
+  "ask": [
+   "과정(D-2 학년/석박사/D-4)",
+   "한국어 성적",
+   "인증대학 여부"
+  ]
+ },
+ {
+  "id": "E39",
+  "type": "직접",
+  "q_ko": "학부 2학년이고 TOPIK 3급 있어요. 학기 중에 몇 시간 돼요?",
+  "q_vi": "Em năm 2 đại học, có TOPIK 3. Trong học kỳ được làm bao nhiêu giờ?",
+  "profile": {
+   "과정": "D-2-2",
+   "학년": 2,
+   "TOPIK": 3
+  },
+  "cards": [
+   "W03"
+  ],
+  "must": [
+   "주중 25시간",
+   "주말·방학 제한 없음",
+   "인증대학 등은 주중 30시간"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E40",
+  "type": "직접",
+  "q_ko": "학부 3학년인데 TOPIK 3급이에요. 몇 시간이에요?",
+  "q_vi": "Em năm 3, TOPIK 3. Được bao nhiêu giờ?",
+  "profile": {
+   "과정": "D-2-2",
+   "학년": 3,
+   "TOPIK": 3
+  },
+  "cards": [
+   "W03"
+  ],
+  "must": [
+   "3~4학년 기준은 TOPIK 4급",
+   "미충족: 주당 10시간(주말·방학 포함)"
+  ],
+  "must_not": [
+   "25시간"
+  ],
+  "ask": []
+ },
+ {
+  "id": "E41",
+  "type": "자료부족",
+  "q_ko": "어학연수생이고 입국 7개월 됐어요. TOPIK 2급 있어요. 몇 시간 일할 수 있어요?",
+  "q_vi": "Em học tiếng, nhập cảnh được 7 tháng, có TOPIK 2. Làm được bao nhiêu giờ?",
+  "profile": {
+   "과정": "D-4-1",
+   "입국후": "7개월",
+   "TOPIK": 2
+  },
+  "cards": [
+   "W04",
+   "W02"
+  ],
+  "must": [
+   "주당 20시간",
+   "주말·방학도 같은 한도",
+   "Study in Korea 근거, 1345 확인 권고"
+  ],
+  "must_not": [
+   "주말 무제한"
+  ],
+  "ask": []
+ },
+ {
+  "id": "E42",
+  "type": "직접",
+  "q_ko": "어학연수 3개월 차인데 알바 신청할 수 있어요?",
+  "q_vi": "Em học tiếng được 3 tháng, xin làm thêm được chưa?",
+  "profile": {
+   "과정": "D-4-1",
+   "입국후": "3개월"
+  },
+  "cards": [
+   "W02"
+  ],
+  "must": [
+   "6개월 경과 후 가능",
+   "아직 불가"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E43",
+  "type": "직접",
+  "q_ko": "배달 라이더 알바 해도 돼요?",
+  "q_vi": "Em làm shipper giao đồ ăn được không?",
+  "profile": {},
+  "cards": [
+   "W05"
+  ],
+  "must": [
+   "배달대행 라이더는 제한 업종"
+  ],
+  "must_not": [
+   "가능"
+  ],
+  "ask": []
+ },
+ {
+  "id": "E44",
+  "type": "직접",
+  "q_ko": "공장 아르바이트 해도 돼요? TOPIK 4급 있어요.",
+  "q_vi": "Em làm thêm ở nhà máy được không? Em có TOPIK 4.",
+  "profile": {
+   "TOPIK": 4
+  },
+  "cards": [
+   "W05",
+   "W06"
+  ],
+  "must": [
+   "제조업은 한국어능력 4급 이상이면 허용",
+   "건설업은 불가",
+   "요건 준수 확인서 필요"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E45",
+  "type": "직접",
+  "q_ko": "알바 허가 신청할 때 뭐 필요해요?",
+  "q_vi": "Xin phép làm thêm cần giấy tờ gì?",
+  "profile": {},
+  "cards": [
+   "W07"
+  ],
+  "must": [
+   "표준근로계약서",
+   "시간제 취업 확인서(대학 담당자)",
+   "사업자등록증 사본",
+   "수수료 면제"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E46",
+  "type": "직접",
+  "q_ko": "허가 받기 전에 먼저 일 시작해도 돼요? 사장님이 괜찮대요.",
+  "q_vi": "Chủ bảo cứ làm trước rồi xin phép sau, được không?",
+  "profile": {},
+  "cards": [
+   "W01",
+   "W10"
+  ],
+  "must": [
+   "반드시 허가 후 근무",
+   "학생·고용주 모두 처벌 가능",
+   "범칙금 최대 3,000만원"
+  ],
+  "must_not": [
+   "괜찮다"
+  ],
+  "ask": []
+ },
+ {
+  "id": "E47",
+  "type": "직접",
+  "q_ko": "학점이 1.8이에요. 알바 허가 나와요?",
+  "q_vi": "Điểm trung bình của em là 1.8. Có được cấp phép làm thêm không?",
+  "profile": {},
+  "cards": [
+   "W08"
+  ],
+  "must": [
+   "직전학기 평균 C(2.0) 미만은 제한될 수 있음"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E48",
+  "type": "직접",
+  "q_ko": "졸업하고 한국에서 취업 준비하려면 무슨 비자예요?",
+  "q_vi": "Tốt nghiệp xong muốn ở lại tìm việc thì xin visa gì?",
+  "profile": {},
+  "cards": [
+   "G01"
+  ],
+  "must": [
+   "D-10-1",
+   "최초 변경은 점수제 면제, 1년"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E49",
+  "type": "개편예정",
+  "q_ko": "TOPIK 4급 있으면 이제 잔고증명 안 내도 된다던데 맞아요?",
+  "q_vi": "Nghe nói có TOPIK 4 thì không cần nộp xác nhận số dư nữa, đúng không?",
+  "profile": {},
+  "cards": [
+   "R01",
+   "P11"
+  ],
+  "must": [
+   "10.7 발표된 개편 예정",
+   "현재는 현행 기준대로 준비"
+  ],
+  "must_not": [
+   "이미 면제된다"
+  ],
+  "ask": []
+ },
+ {
+  "id": "E50",
+  "type": "개편예정",
+  "q_ko": "2028년부터 한국어 없으면 알바 못 한다는 게 사실이에요?",
+  "q_vi": "Từ 2028 không có tiếng Hàn thì không được làm thêm là thật à?",
+  "profile": {},
+  "cards": [
+   "R02"
+  ],
+  "must": [
+   "Q&A상 1년 유예 후 '28년 이후 계획",
+   "현재는 현행 규정"
+  ],
+  "must_not": [
+   "이미 시행 중"
+  ],
+  "ask": []
+ },
+ {
+  "id": "E51",
+  "type": "범위밖",
+  "q_ko": "한국 집 보증금 사기 안 당하려면 어떻게 해요?",
+  "q_vi": "Làm sao để không bị lừa tiền đặt cọc nhà ở Hàn?",
+  "profile": {},
+  "cards": [
+   "M02"
+  ],
+  "must": [
+   "근거 자료 없음 안내",
+   "확인처 안내"
+  ],
+  "must_not": [
+   "근거 없는 구체적 법률 조언"
+  ],
+  "ask": []
+ },
+ {
+  "id": "E52",
+  "type": "민감",
+  "q_ko": "친구가 비자 기간이 지났는데 어떻게 해야 해요?",
+  "q_vi": "Bạn em quá hạn visa rồi, phải làm sao?",
+  "profile": {},
+  "cards": [
+   "M03"
+  ],
+  "must": [
+   "판정하지 않음",
+   "1345·관할 출입국 안내",
+   "등록 행정사·변호사 조회 안내"
+  ],
+  "must_not": [
+   "단속 회피 방법"
+  ],
+  "ask": []
+ },
+ {
+  "id": "E53",
+  "type": "직접",
+  "q_ko": "신청서를 베트남어로 써도 돼요?",
+  "q_vi": "Em viết đơn bằng tiếng Việt được không?",
+  "profile": {},
+  "cards": [
+   "M04"
+  ],
+  "must": [
+   "한글 또는 영문으로만 기재"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E54",
+  "type": "직접",
+  "q_ko": "어학연수 비자는 몇 개월 나와요?",
+  "q_vi": "Visa học tiếng được cấp mấy tháng?",
+  "profile": {},
+  "cards": [
+   "P02"
+  ],
+  "must": [
+   "6개월 이내 단수",
+   "이후 국내 연장"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E55",
+  "type": "공관별",
+  "q_ko": "다낭 총영사관에 낼 공통 서류 알려주세요.",
+  "q_vi": "Cho em biết hồ sơ chung nộp ở Tổng Lãnh sự quán Đà Nẵng.",
+  "profile": {
+   "공관": "다낭"
+  },
+  "cards": [
+   "P07",
+   "P24"
+  ],
+  "must": [
+   "CT07 거주정보확인서",
+   "자체 점검용 설문지",
+   "여권 잔여 6개월 이상",
+   "정해진 순서"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E56",
+  "type": "공관별",
+  "q_ko": "하노이에서 어학연수 비자 낼 때 자기소개서는 컴퓨터로 써도 돼요?",
+  "q_vi": "Nộp visa học tiếng ở Hà Nội, bản giới thiệu bản thân đánh máy được không?",
+  "profile": {
+   "공관": "하노이",
+   "과정": "D-4-1"
+  },
+  "cards": [
+   "P17"
+  ],
+  "must": [
+   "자필로 작성"
+  ],
+  "must_not": [
+   "컴퓨터로 써도 된다"
+  ],
+  "ask": []
+ },
+ {
+  "id": "E57",
+  "type": "직접",
+  "q_ko": "학사과정은 기본 서류 말고 뭘 더 내요?",
+  "q_vi": "Hệ đại học cần nộp thêm gì ngoài hồ sơ cơ bản?",
+  "profile": {},
+  "cards": [
+   "P18"
+  ],
+  "must": [
+   "최종학력 입증서류",
+   "재정능력 입증서류"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E58",
+  "type": "직접",
+  "q_ko": "베트남 대학 4학년인데 한국 연구과정(D-2-5)으로 갈 수 있어요?",
+  "q_vi": "Em đang năm 4 đại học ở Việt Nam, đi chương trình nghiên cứu D-2-5 được không?",
+  "profile": {},
+  "cards": [
+   "P19"
+  ],
+  "must": [
+   "석사 이상 원칙",
+   "특정연구기관 지정 대학 또는 THE 200·QS 500 이내 국내대학 이공계 초청 시 학사 재학 중 허용"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E59",
+  "type": "공관별",
+  "q_ko": "호치민에 서류 낼 때 양면 복사해도 돼요?",
+  "q_vi": "Nộp hồ sơ ở TP.HCM photo hai mặt được không?",
+  "profile": {
+   "공관": "호치민"
+  },
+  "cards": [
+   "P24"
+  ],
+  "must": [
+   "한 쪽 면만",
+   "A4"
+  ],
+  "must_not": [
+   "양면 가능"
+  ],
+  "ask": []
+ },
+ {
+  "id": "E60",
+  "type": "직접",
+  "q_ko": "교수님 연구실에서 연구수당 받는데 알바 허가 받아야 해요?",
+  "q_vi": "Em nhận phụ cấp nghiên cứu ở phòng lab của giáo sư, có phải xin phép làm thêm không?",
+  "profile": {},
+  "cards": [
+   "W09"
+  ],
+  "must": [
+   "학업 연계 교내 연구는 허가 면제",
+   "학업 무관이면 허가 필요"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E61",
+  "type": "직접",
+  "q_ko": "졸업하고 구직비자로 있는데 알바 돼요? TOPIK 4급 있어요.",
+  "q_vi": "Em đang visa tìm việc sau tốt nghiệp, làm thêm được không? Em có TOPIK 4.",
+  "profile": {
+   "비자": "D-10-1",
+   "TOPIK": 4
+  },
+  "cards": [
+   "W11"
+  ],
+  "must": [
+   "졸업 3년 미만 등 요건",
+   "주중 25시간, 주말 제한 없음",
+   "수수료 12만원"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E62",
+  "type": "직접",
+  "q_ko": "어학연수 중인데 남편을 한국에 데려올 수 있어요?",
+  "q_vi": "Em đang học tiếng, có đưa chồng sang Hàn được không?",
+  "profile": {
+   "과정": "D-4-1"
+  },
+  "cards": [
+   "G02"
+  ],
+  "must": [
+   "어학연수생은 F-3 발급 제한(인도적 사유 예외)"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E63",
+  "type": "개편예정",
+  "q_ko": "구직비자가 2년으로 줄어든다던데요?",
+  "q_vi": "Nghe nói visa tìm việc bị giảm còn 2 năm?",
+  "profile": {},
+  "cards": [
+   "R03"
+  ],
+  "must": [
+   "한국어 미충족 시 최대 2년 추진",
+   "아직 시행 아님"
+  ],
+  "must_not": [
+   "이미 시행"
+  ],
+  "ask": []
+ },
+ {
+  "id": "E64",
+  "type": "개편예정",
+  "q_ko": "졸업하고 베트남 가면 한국 다시 오기 쉬운 비자가 있어요?",
+  "q_vi": "Tốt nghiệp về Việt Nam rồi có visa nào dễ quay lại Hàn không?",
+  "profile": {},
+  "cards": [
+   "R04"
+  ],
+  "must": [
+   "유학 동문 복수 방문비자(C-3-12) 신설 예정",
+   "시행일 미정"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E65",
+  "type": "개편예정",
+  "q_ko": "주말반 학과에 가도 비자 문제없어요?",
+  "q_vi": "Học khoa cuối tuần thì visa có vấn đề gì không?",
+  "profile": {},
+  "cards": [
+   "R05"
+  ],
+  "must": [
+   "현행: 야간·주말 수강자 체류허가 제한 원칙",
+   "'27년 상반기부터 편법 학과 우대 중지 예정"
+  ],
+  "must_not": [],
+  "ask": []
+ },
+ {
+  "id": "E66",
+  "type": "직접",
+  "q_ko": "서류 다 내면 비자 확실히 나오죠?",
+  "q_vi": "Nộp đủ hồ sơ thì chắc chắn được cấp visa đúng không?",
+  "profile": {},
+  "cards": [
+   "M01",
+   "P22"
+  ],
+  "must": [
+   "최종 결정은 공관",
+   "인터뷰·추가서류 가능"
+  ],
+  "must_not": [
+   "확실히 나온다"
+  ],
+  "ask": []
+ },
+ {
+  "id": "E67",
+  "type": "공관별",
+  "q_ko": "교환학생 6개월이에요. 체재비 얼마 있어야 해요? 아직 어느 공관에 낼지 몰라요.",
+  "q_vi": "Em đi trao đổi 6 tháng, cần bao nhiêu phí sinh hoạt? Em chưa biết nộp ở cơ quan nào.",
+  "profile": {
+   "과정": "D-2-6",
+   "기간": "6개월"
+  },
+  "cards": [
+   "P13",
+   "M05"
+  ],
+  "must": [
+   "호치민 1,148,166원×6",
+   "하노이 1,069,654원×6",
+   "다낭 1,069,654원×6",
+   "공관별로 각각 안내",
+   "매년 갱신"
+  ],
+  "must_not": [
+   "한 공관 금액만 안내"
+  ],
+  "ask": []
+ }
+]
