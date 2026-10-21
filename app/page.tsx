@@ -20,5 +20,5 @@ const cardMeta: Record<string, CardMeta> = Object.fromEntries(
 );
 
 export default function Page() {
-  return <Chat cardCount={cards.length} cardMeta={cardMeta} />;
+  return <Chat cardMeta={cardMeta} />;
 }
