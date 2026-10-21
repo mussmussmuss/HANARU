@@ -67,7 +67,7 @@ export async function POST(req: Request) {
       try {
         const result = await runChat(client, messages, send);
         // 대화 내용은 기록하지 않고 사용량과 도구 판정 상태만 남긴다
-        console.log(JSON.stringify({ usage: result.usage, tools: result.toolLog, unknown_cards: result.unknownCards }));
+        console.log(JSON.stringify({ usage: result.usage, tools: result.toolLog.map(({ output: _, ...t }) => t), unknown_cards: result.unknownCards }));
         send(result.refused ? { t: "error", code: "refusal" } : { t: "done", cards: result.cards });
       } catch (err) {
         console.error(err instanceof Anthropic.APIError ? `API ${err.status}` : err);

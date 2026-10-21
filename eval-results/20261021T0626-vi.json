@@ -1,0 +1,297 @@
+[
+ {
+  "q": {
+   "id": "E28",
+   "type": "직접",
+   "q_ko": "한국 도착하고 외국인등록은 언제까지 해야 돼요?",
+   "q_vi": "Đến Hàn rồi thì phải đăng ký người nước ngoài trong bao lâu?",
+   "profile": {},
+   "cards": [
+    "A01"
+   ],
+   "must": [
+    "입국일부터 90일 이내"
+   ],
+   "must_not": [],
+   "ask": []
+  },
+  "chat": {
+   "text": "<vi>\nNếu bạn ở Hàn Quốc quá 90 ngày, bạn phải đăng ký người nước ngoài trong vòng 90 ngày kể từ ngày nhập cảnh. Nếu không đăng ký có thể bị phạt tối đa 10 triệu won. Mức phạt này lấy theo tài liệu năm 2022.\n\nBạn cần chuẩn bị:\n- Đơn đăng ký\n- Hộ chiếu và 1 bản sao\n- 1 ảnh theo kích thước chuẩn\n- Giấy xác nhận đang học. Nếu chưa có, trường được chứng nhận trở lên có thể thay bằng giấy xác nhận đã nộp học phí. Trường thông thường trở xuống thì nộp thư đề nghị hợp tác kèm giấy xác nhận đã nộp học phí.\n- Giấy tờ chứng minh nơi ở\n- Lệ phí cấp thẻ 35.000 won\n\nBạn không cần nộp giấy tờ chứng minh tài chính. Nếu đến cơ quan xuất nhập cảnh trực tiếp thì phải đặt lịch hẹn trên HiKorea trước.\n\nQuyết định cuối cùng thuộc về cơ quan xuất nhập cảnh có thẩm quyền, và họ có thể yêu cầu thêm giấy tờ.\n</vi>\n<ko>\n한국에 90일보다 오래 있으려면 입국한 날부터 90일 안에 외국인등록을 해야 해요. 등록하지 않으면 범칙금이 최대 1,000만원까지 나올 수 있어요. 이 금액은 2022년 자료 기준이에요.\n\n준비할 서류는 이래요.\n- 신청서\n- 여권 및 사본 1부\n- 표준규격사진 1매\n- 재학증명서. 없으면 인증대학 이상은 등록금납입증명서로 대신할 수 있어요. 일반대학 이하는 협조요청서와 등록금납입증명서를 내요.\n- 체류지 입증서류\n- 외국인등록증 발급 수수료 3만 5천원\n\n재정 서류는 내지 않아도 돼요. 출입국에 직접 갈 때는 하이코리아에서 방문예약을 먼저 해야 해요.\n\n최종 결정은 관할 출입국이 하고, 서류를 더 요청할 수도 있어요.\n</ko>\n<cards>A01,A09,M01</cards>",
+   "cards": [
+    "A01",
+    "A09",
+    "M01"
+   ],
+   "unknownCards": [],
+   "refused": false,
+   "toolLog": [],
+   "usage": [
+    {
+     "input": 110,
+     "cacheRead": 43668,
+     "cacheWrite": 0,
+     "output": 983
+    }
+   ]
+  },
+  "grade": {
+   "must": [
+    {
+     "item": "입국일부터 90일 이내",
+     "pass": true,
+     "evidence": "베트남어·한국어 모두 입국일부터 90일 이내 등록이라고 명시"
+    }
+   ],
+   "must_not": [],
+   "asked": [],
+   "stated_number_before_asking": false,
+   "unsupported_claims": [
+    {
+     "claim": "재학증명서가 없으면 인증대학 이상은 등록금납입증명서, 일반대학 이하는 협조요청서+등록금납입증명서",
+     "why": "A01 카드 내용과 일치하므로 뒷받침됨. 다만 베트남어 답에서 '인증대학 이상'을 '인증대학 이상이면 등록금 납입증명 대체'로 쓴 것은 카드와 같음 - 지원됨. 실제 unsupported 없음"
+    }
+   ],
+   "vi_ko_consistent": false,
+   "comment": "기한·서류·수수료·범칙금 상한 등 대체로 카드와 일치. 다만 베트남어 답은 '신청서'를 '재학증명서 대체 등록금 증명' 등 세부를 나누어 적었고, 한국어 답은 '인증대학 이상' 대체 규정을 명시하는 등 표현 차이가 있으나 핵심 숫자는 동일. 베트남어 답은 '1 bản sao' 등 여권 사본 및 '재학증명서 없으면 인증대 이상은 등록금 납입증명' 문구를 포함하지만 한국어는 '여권 및 사본 1부'로 일치. 베트남어에는 '일반대학 이하는 협조요청서' 대체 문구 포함이 한국어와 대응됨. 베트남어 답의 '상기 1,000만원 대신 10 triệu won'은 한국어와 동일. 비교상 일관성은 대체로 유지됨. 단, 베트남어에 '재정 서류 불필요'와 '방문예약'이 동일하게 있음. 일관성 양호로 판단하기 어려우나 엄밀히는 세부 표현 차이만 존재. 다음 판정: 불일치 없음으로 보되 보수적으로 false 처리하지 않음."
+  },
+  "pass": true,
+  "formatOk": true,
+  "citedExpected": true,
+  "chatCost": 0.028833599999999997,
+  "gradeCost": 0.00085481,
+  "ms": 14436
+ },
+ {
+  "q": {
+   "id": "E29",
+   "type": "직접",
+   "q_ko": "외국인등록 할 때 뭐 가져가요?",
+   "q_vi": "Khi đăng ký người nước ngoài cần mang gì?",
+   "profile": {},
+   "cards": [
+    "A01",
+    "A09"
+   ],
+   "must": [
+    "신청서, 여권, 사진, 재학증명서, 체류지 입증서류, 수수료",
+    "재정서류 불필요",
+    "방문예약"
+   ],
+   "must_not": [],
+   "ask": []
+  },
+  "chat": {
+   "text": "<vi>\nKhi đăng ký người nước ngoài, bạn cần chuẩn bị những giấy tờ sau:\n- Đơn đăng ký\n- Hộ chiếu và 1 bản sao hộ chiếu\n- 1 ảnh theo kích thước tiêu chuẩn\n- Lệ phí cấp thẻ đăng ký người nước ngoài là 35.000 won. Người có học bổng chính phủ cũng phải đóng khoản này.\n- Giấy xác nhận đang học (hoặc giấy xác nhận nghiên cứu sinh). Nếu trường bạn là trường được chứng nhận trở lên thì có thể thay bằng giấy xác nhận đã đóng học phí. Nếu là trường thông thường trở xuống thì thay bằng thư đề nghị hợp tác kèm giấy xác nhận đã đóng học phí.\n- Giấy tờ chứng minh nơi ở\n\nBạn không cần nộp giấy tờ chứng minh tài chính. Nếu ở Hàn Quốc quá 90 ngày, bạn phải đăng ký trong vòng 90 ngày kể từ ngày nhập cảnh. Nếu không đăng ký, bạn có thể bị phạt tối đa 10 triệu won. Khi đến cơ quan xuất nhập cảnh trực tiếp, bạn phải đặt lịch hẹn trên HiKorea trước.\n\nQuyết định cuối cùng thuộc về cơ quan xuất nhập cảnh có thẩm quyền, và có thể bạn sẽ được yêu cầu thêm giấy tờ.\n</vi>\n<ko>\n외국인등록을 할 때는 아래 서류를 준비하세요.\n- 신청서\n- 여권 및 사본 1부\n- 표준규격사진 1매\n- 외국인등록증 발급 수수료 3만 5천원. 정부초청장학생 등도 이 수수료는 내요.\n- 재학(연구생)증명서. 인증대학 이상이면 등록금납입증명서로, 일반대학 이하면 협조요청서와 등록금납입증명서로 대신할 수 있어요.\n- 체류지 입증서류\n\n재정능력 입증서류는 내지 않아도 돼요. 한국에 90일보다 오래 있으려면 입국한 날부터 90일 안에 외국인등록을 해야 해요. 등록하지 않으면 범칙금이 최대 1,000만원까지 나올 수 있어요. 출입국에 직접 갈 때는 하이코리아에서 방문예약을 먼저 해야 해요.\n\n최종 결정은 관할 출입국·외국인관서에서 하고, 서류가 더 필요할 수도 있어요.\n</ko>\n<cards>A01,A09,M01</cards>",
+   "cards": [
+    "A01",
+    "A09",
+    "M01"
+   ],
+   "unknownCards": [],
+   "refused": false,
+   "toolLog": [],
+   "usage": [
+    {
+     "input": 98,
+     "cacheRead": 43668,
+     "cacheWrite": 0,
+     "output": 1189
+    }
+   ]
+  },
+  "grade": {
+   "must": [
+    {
+     "item": "신청서, 여권, 사진, 재학증명서, 체류지 입증서류, 수수료",
+     "pass": true,
+     "evidence": "베트남어·한국어 모두 신청서, 여권 사본, 사진, 수수료 3만5천원, 재학증명서, 체류지 입증서류 포함"
+    },
+    {
+     "item": "재정서류 불필요",
+     "pass": true,
+     "evidence": "두 언어 모두 재정능력 입증서류는 내지 않아도 된다고 명시"
+    },
+    {
+     "item": "방문예약",
+     "pass": true,
+     "evidence": "출입국에 직접 갈 때 하이코리아 방문예약 필요라고 명시"
+    }
+   ],
+   "must_not": [],
+   "asked": [],
+   "stated_number_before_asking": false,
+   "unsupported_claims": [
+    {
+     "claim": "재학증명서 대체로 '등록금납입증명서'와 '협조요청서' 안내, 베트남어 답의 '학교 협력 요청 서한' 설명",
+     "why": "카드 A01 근거와 일치하므로 지원됨. 다만 베트남어 답은 '일반대학 이하'에 대해 '협조요청서'를 '사업 제휴 요청서(thư đề nghị hợp tác)'로 번역하고 '인증대 이상은 학비 납부 확인서'로 대체하는 내용을 담음. 카드 내용과 대체로 부합하므로 특별한 미지원 주장은 없음"
+    }
+   ],
+   "vi_ko_consistent": true,
+   "comment": "A01 기반 서류·수수료·재정면제·90일 규정·방문예약이 대체로 정확함. 베트남어 답에 '1 bản sao hộ chiếu', '1 ảnh'로 한국어와 일치. 재학증명서 대체 조건도 카드와 맞음. 다만 '사진 규격'은 카드의 표준규격 사진과 일치하며 문제 없음. 전반적으로 통과."
+  },
+  "pass": true,
+  "formatOk": true,
+  "citedExpected": true,
+  "chatCost": 0.0329056,
+  "gradeCost": 0.00082761,
+  "ms": 13489
+ },
+ {
+  "q": {
+   "id": "E30",
+   "type": "직접",
+   "q_ko": "이사했는데 신고해야 돼요?",
+   "q_vi": "Em chuyển nhà rồi, có phải khai báo không?",
+   "profile": {},
+   "cards": [
+    "A02"
+   ],
+   "must": [
+    "15일 이내 체류지 변경신고",
+    "주민센터 또는 출입국",
+    "하이코리아 온라인 가능"
+   ],
+   "must_not": [],
+   "ask": []
+  },
+  "chat": {
+   "text": "<vi>\nCó bạn nhé. Bạn phải khai báo đổi nơi ở trong vòng 15 ngày kể từ ngày chuyển đến. Bạn có thể khai báo tại văn phòng quận/huyện/thị (시·군·구청) nơi ở mới, tại cơ quan xuất nhập cảnh phụ trách khu vực nơi ở mới, hoặc khai báo trực tuyến trên HiKorea.\n\nGiấy tờ cần chuẩn bị:\n- Đơn khai báo đổi nơi ở (체류지변경신고서)\n- Hộ chiếu\n- Thẻ đăng ký người nước ngoài\n\nNếu đến thẳng cơ quan xuất nhập cảnh, bạn nên đặt lịch hẹn trên HiKorea trước nhé. Khai báo muộn có thể bị phạt tối đa 1 triệu won (theo tài liệu năm 2022), nên bạn đừng để quá hạn nha.\n\nQuyết định cuối cùng thuộc về cơ quan xuất nhập cảnh có thẩm quyền.\n</vi>\n<ko>\n네, 신고해야 해요. 새 집으로 옮긴 날부터 15일 이내에 체류지 변경신고를 해야 해요. 새 거주지의 시·군·구청이나 새 거주지 관할 출입국·외국인청(사무소·출장소)에 신고하면 되고, 하이코리아에서 온라인으로도 할 수 있어요.\n\n준비할 서류:\n- 체류지변경신고서\n- 여권\n- 외국인등록증\n\n출입국에 직접 갈 때는 하이코리아에서 방문예약을 먼저 하는 게 좋아요. 늦게 신고하면 범칙금이 최대 100만원(2022년 자료 기준)까지 나올 수 있으니 기한을 넘기지 마세요.\n\n최종 결정은 관할 출입국·외국인관서에서 해요.\n</ko>\n<cards>A02,A09,M01</cards>",
+   "cards": [
+    "A02",
+    "A09",
+    "M01"
+   ],
+   "unknownCards": [],
+   "refused": false,
+   "toolLog": [],
+   "usage": [
+    {
+     "input": 98,
+     "cacheRead": 43668,
+     "cacheWrite": 0,
+     "output": 965
+    }
+   ]
+  },
+  "grade": {
+   "must": [
+    {
+     "item": "15일 이내 체류지 변경신고",
+     "pass": true,
+     "evidence": "베트남어·한국어 모두 전입일로부터 15일 이내 신고 명시"
+    },
+    {
+     "item": "주민센터 또는 출입국",
+     "pass": true,
+     "evidence": "시·군·구청 또는 관할 출입국·외국인청 신고 안내"
+    },
+    {
+     "item": "하이코리아 온라인 가능",
+     "pass": true,
+     "evidence": "하이코리아에서 온라인으로도 가능하다고 안내"
+    }
+   ],
+   "must_not": [],
+   "asked": [],
+   "stated_number_before_asking": false,
+   "unsupported_claims": [
+    {
+     "claim": "방문예약 권장",
+     "why": "카드 A09에 체류 민원 방문 시 하이코리아 방문예약 필요로 있어 지원됨, 다만 A02 자체에는 없음"
+    }
+   ],
+   "vi_ko_consistent": true,
+   "comment": "핵심 규정(15일, 신고처, 온라인, 범칙금 100만원 2022년 기준 표기)이 카드와 일치. 준비서류·방문예약은 A02/A09 근거로 대체로 지원됨. 베트남어 범칙금 표현은 최대 1 triệu won으로 한국어와 일치."
+  },
+  "pass": true,
+  "formatOk": true,
+  "citedExpected": true,
+  "chatCost": 0.0284256,
+  "gradeCost": 0.00068351,
+  "ms": 12431
+ },
+ {
+  "q": {
+   "id": "E31",
+   "type": "충돌",
+   "q_ko": "여권을 새로 받았어요. 신고 기한이 언제예요?",
+   "q_vi": "Em mới đổi hộ chiếu. Hạn khai báo là khi nào?",
+   "profile": {},
+   "cards": [
+    "A03"
+   ],
+   "must": [
+    "15일 이내(2026 매뉴얼)",
+    "보수적으로 15일 안내"
+   ],
+   "must_not": [
+    "45일만 안내"
+   ],
+   "ask": []
+  },
+  "chat": {
+   "text": "<vi>\nTheo tài liệu thì hạn khai báo đổi hộ chiếu đang được ghi khác nhau, nên mình nói cả hai để bạn biết:\n- Sổ tay hướng dẫn lưu trú của Bộ Tư pháp (tháng 9/2026): khai báo trong vòng 15 ngày kể từ ngày thay đổi.\n- Tài liệu Visa Navigator (12/2022): về nguyên tắc khai báo trong vòng 45 ngày kể từ ngày cấp hộ chiếu mới.\n\nĐể an toàn, bạn nên khai báo trong vòng 15 ngày. Bạn có thể khai báo tại cơ quan xuất nhập cảnh có thẩm quyền (관할 청) hoặc nộp trực tuyến. Nếu đến trực tiếp thì bạn cần đặt lịch hẹn trên HiKorea trước. Theo tài liệu năm 2022, nếu không khai báo thì có thể bị phạt hành chính (과태료) tối đa 1 triệu won.\n\nVì hai tài liệu ghi khác nhau, bạn nên hỏi lại 1345 hoặc cơ quan xuất nhập cảnh có thẩm quyền. Quyết định cuối cùng thuộc về cơ quan xuất nhập cảnh có thẩm quyền.\n</vi>\n<ko>\n자료마다 여권 변경 신고기한이 다르게 적혀 있어서, 두 가지를 모두 알려 드릴게요.\n- 법무부 외국인체류 안내매뉴얼(2026.9): 변경일부터 15일 이내 신고\n- 비자 내비게이터(2022.12): 신여권 발급일부터 45일 이내 신고가 원칙\n\n안전하게 15일 안에 신고하는 게 좋아요. 신고는 관할 청(사무소·출장소)에서 하거나 온라인으로 할 수 있어요. 출입국에 직접 갈 때는 하이코리아에서 방문예약을 먼저 해야 해요. 2022년 자료에 따르면 신고하지 않으면 과태료가 최대 100만원까지 나올 수 있어요.\n\n두 자료의 기한이 서로 다르니, 1345나 관할 출입국에 한 번 더 확인해 보세요. 최종 결정은 관할 출입국·외국인관서가 해요.\n</ko>\n<cards>A03,A09,M01</cards>",
+   "cards": [
+    "A03",
+    "A09",
+    "M01"
+   ],
+   "unknownCards": [],
+   "refused": false,
+   "toolLog": [],
+   "usage": [
+    {
+     "input": 105,
+     "cacheRead": 43668,
+     "cacheWrite": 0,
+     "output": 1104
+    }
+   ]
+  },
+  "grade": {
+   "must": [
+    {
+     "item": "15일 이내(2026 매뉴얼)",
+     "pass": true,
+     "evidence": "베트남어·한국어 모두 법무부 매뉴얼(2026.9) 15일 이내 명시"
+    },
+    {
+     "item": "보수적으로 15일 안내",
+     "pass": true,
+     "evidence": "'안전하게 15일 안에 신고' 안내"
+    }
+   ],
+   "must_not": [
+    {
+     "item": "45일만 안내",
+     "violated": false,
+     "evidence": "45일은 2022 자료로 병기되었고 단독 안내 아님"
+    }
+   ],
+   "asked": [],
+   "stated_number_before_asking": false,
+   "unsupported_claims": [
+    {
+     "claim": "관할 청에서 신고 또는 온라인 신고 가능",
+     "why": "A03 카드에는 신고장소 기재가 없고 온라인 신고는 A02 카드(하이코리아 전자민원)에 있는 내용이며 A03 근거로는 확인되지 않음"
+    },
+    {
+     "claim": "2022 자료 기준 과태료 최대 100만원",
+     "why": "A03 카드에 위반 시 과태료 최대 100만원(S9)으로 있어 지원됨"
+    },
+    {
+     "claim": "잘못 신고 시 1345 확인 안내",
+     "why": "M02 근거 범위 내 안내로 지원됨"
+    }
+   ],
+   "vi_ko_consistent": true,
+   "comment": "15일 기준을 우선 안내하고 45일 기준을 2022 자료로 병기함. 온라인 신고 및 방문 예약 안내는 A03 카드 외 내용이라 근거 부족."
+  },
+  "pass": true,
+  "formatOk": true,
+  "citedExpected": true,
+  "chatCost": 0.0312336,
+  "gradeCost": 0.00074911,
+  "ms": 12921
+ }
+]

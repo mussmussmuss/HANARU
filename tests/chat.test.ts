@@ -20,6 +20,10 @@ describe("답변 파서", () => {
     expect(parseAnswer("<v").raw).toBe("");
   });
 
+  it("<vi> 태그를 빠뜨린 답은 <ko> 앞부분을 베트남어로 (E50)", () => {
+    expect(parseAnswer("Xin chào\n\n<ko>\n안녕\n</ko>\n<cards>R02</cards>")).toEqual({ vi: "Xin chào", ko: "안녕", cards: ["R02"] });
+  });
+
   it("형식을 지키지 않은 답은 원문 그대로", () => {
     expect(parseAnswer("hello").raw).toBe("hello");
   });
