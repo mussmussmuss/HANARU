@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { parseAnswer, questionLang, type QuestionLang } from "@/lib/answer";
 import CardSheet, { type CardMeta } from "@/components/CardSheet";
+import SummarySheet, { type SummaryLang, type SummaryState } from "@/components/SummarySheet";
 
 type Message =
   | { role: "user"; text: string }
@@ -32,6 +33,10 @@ const ERRORS: Record<string, string> = {
   bad_request: "Cuộc trò chuyện quá dài. Hãy bắt đầu cuộc trò chuyện mới. · 대화가 너무 길어요. 새 대화를 시작해 주세요.",
   default: "Đã xảy ra lỗi. · 오류가 났어요.",
 };
+const SUMMARY_ERRORS: Record<string, string> = {
+  ...ERRORS,
+  default: "Không tạo được bản tóm tắt. · 요약을 만들지 못했어요.",
+};
 // 다시 시도해도 소용없는 오류
 const NO_RETRY = new Set(["no_api_key", "refusal", "bad_request", "too_many_requests"]);
 
@@ -53,7 +58,9 @@ export default function Chat({ cardCount, cardMeta }: { cardCount: number; cardM
   const [busy, setBusy] = useState(false);
   const [status, setStatus] = useState<string | null>(null);
   const [openCard, setOpenCard] = useState<string | null>(null);
-  const [summaryNote, setSummaryNote] = useState(false);
+  // 요약: 같은 대화면 다시 만들지 않는다 (key = 요약한 대화)
+  const [summary, setSummary] = useState<{ key: string; state: SummaryState } | null>(null);
+  const [summaryOpen, setSummaryOpen] = useState(false);
   const [langMode, setLangMode] = useState<LangMode>("both");
   const endRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -86,6 +93,7 @@ export default function Chat({ cardCount, cardMeta }: { cardCount: number; cardM
   }, [input]);
 
   const started = messages.some((m) => m.role === "user");
+  const answered = messages.some((m, i) => i > 0 && m.role === "bot" && !m.streaming);
 
   // API로 보낼 대화: 첫 인사말과 안내문은 빼고, 사용자 질문과 완성된 답만
   function history(list: Message[]) {
@@ -193,13 +201,51 @@ export default function Chat({ cardCount, cardMeta }: { cardCount: number; cardM
     ask(messages.filter((m, i) => !(i === messages.length - 1 && m.role === "notice")));
   }
 
+  // 요약할 대화: 답을 받은 질문까지만 (마지막이 답 없는 질문이면 뺀다)
+  function summaryHistory() {
+    const h = history(messages);
+    return h[h.length - 1]?.role === "user" ? h.slice(0, -1) : h;
+  }
+
+  async function openSummary(force = false) {
+    setSummaryOpen(true);
+    const h = summaryHistory();
+    const key = JSON.stringify(h);
+    if (!force && summary?.key === key && summary.state.status !== "error") return;
+    setSummary({ key, state: { status: "loading" } });
+    const done = (state: SummaryState) => setSummary((cur) => (cur?.key === key ? { key, state } : cur));
+    try {
+      const res = await fetch("/api/summary", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: h }),
+      });
+      const body = await res.json().catch(() => ({}));
+      if (body.summary) done({ status: "ready", summary: body.summary });
+      else {
+        const code = body.error ?? "default";
+        done({ status: "error", message: SUMMARY_ERRORS[code] ?? SUMMARY_ERRORS.default, retry: !NO_RETRY.has(code) });
+      }
+    } catch {
+      done({ status: "error", message: SUMMARY_ERRORS.default, retry: true });
+    }
+  }
+
+  // 요약 언어 기본값: 병기 모드면 병기, 질문 언어 모드면 마지막 질문의 언어
+  function summaryLang(): SummaryLang {
+    if (langMode === "both") return "both";
+    const last = [...messages].reverse().find((m) => m.role === "user");
+    return last?.role === "user" ? questionLang(last.text) : "both";
+  }
+
   function reset() {
     abortRef.current?.abort();
     abortRef.current = null;
     setBusy(false);
     setStatus(null);
     setInput("");
-    setSummaryNote(false);
+    setSummary(null);
+    setSummaryOpen(false);
     setMessages(START);
   }
 
@@ -212,8 +258,7 @@ export default function Chat({ cardCount, cardMeta }: { cardCount: number; cardM
           <p>Hỏi đáp visa · 유학 비자 Q&amp;A</p>
         </div>
         <div className="header-actions">
-          {/* 대화 요약은 다음 단계에서 만든다 */}
-          <button onClick={() => setSummaryNote(true)} disabled={!started}>
+          <button onClick={() => openSummary()} disabled={!answered || busy}>
             Tóm tắt
             <small>요약</small>
           </button>
@@ -292,11 +337,6 @@ export default function Chat({ cardCount, cardMeta }: { cardCount: number; cardM
             </div>
           );
         })}
-        {summaryNote && (
-          <p className="notice">
-            Tính năng tóm tắt sẽ có ở bước tiếp theo. · 대화 요약 기능은 다음 단계에서 추가돼요.
-          </p>
-        )}
         <div ref={endRef} />
       </section>
 
@@ -336,6 +376,16 @@ export default function Chat({ cardCount, cardMeta }: { cardCount: number; cardM
           ↑
         </button>
       </form>
+
+      {summaryOpen && summary && (
+        <SummarySheet
+          state={summary.state}
+          initialLang={summaryLang()}
+          cardMeta={cardMeta}
+          onClose={() => setSummaryOpen(false)}
+          onRetry={() => openSummary(true)}
+        />
+      )}
 
       {openCard && cardMeta[openCard] && (
         <CardSheet id={openCard} card={cardMeta[openCard]} onClose={() => setOpenCard(null)} />

@@ -286,3 +286,84 @@ html, body {
 }
 
 .header-text h1, .header-text p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* 대화 요약: 앱 안에서는 전체 화면, 인쇄(PDF 저장) 때는 요약 문서만 A4로 */
+.summary-sheet {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+}
+.summary-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+}
+.summary-actions > button {
+  border: 1px solid var(--border); background: var(--surface); color: var(--text);
+  border-radius: 999px; width: 36px; height: 36px; font-size: 16px; cursor: pointer;
+}
+.summary-lang { display: flex; gap: 4px; margin-left: auto; }
+.summary-lang button {
+  border: 1px solid var(--border); background: var(--surface); color: var(--muted);
+  border-radius: 999px; padding: 6px 10px; font-size: 12px; cursor: pointer;
+}
+.summary-lang button.on { background: var(--primary-soft); color: var(--primary); border-color: var(--primary); }
+.summary-status {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 10px; padding: 24px; text-align: center; color: var(--muted); font-size: 14px;
+}
+.summary-status.error { color: var(--danger); }
+.summary-status button {
+  border: 1px solid var(--border); background: var(--surface); color: var(--text);
+  border-radius: 999px; padding: 6px 14px; font-size: 13px; cursor: pointer;
+}
+.summary-doc { flex: 1; overflow-y: auto; padding: 16px 18px 24px; font-size: 14px; line-height: 1.5; }
+.summary-doc h2 { font-size: 18px; margin: 0; }
+.summary-meta { margin: 2px 0 8px; font-size: 12px; color: var(--muted); }
+.summary-doc section { margin-top: 14px; }
+.summary-doc h3 { font-size: 14px; margin: 0 0 4px; color: var(--primary); }
+.summary-doc ul { margin: 0; padding-left: 18px; }
+.summary-doc li { margin-bottom: 4px; }
+.summary-doc li .ko { display: block; color: var(--muted); }
+.summary-cards { margin: 4px 0 0; font-size: 11px; color: var(--muted); }
+.summary-doc footer { margin-top: 18px; padding-top: 10px; border-top: 1px solid var(--border); font-size: 11px; color: var(--muted); }
+.summary-buttons { display: flex; gap: 8px; padding: 10px 16px 14px; border-top: 1px solid var(--border); }
+.summary-buttons button {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  border: 1px solid var(--border); background: var(--surface); color: var(--text);
+  border-radius: 14px; padding: 8px; font-size: 14px; cursor: pointer;
+}
+.summary-buttons button:first-child { background: var(--primary); border-color: var(--primary); color: #fff; }
+.summary-buttons button:first-child small { color: #e7f0ff; }
+.summary-buttons small { font-size: 11px; color: var(--muted); }
+
+@media print {
+  @page { size: A4; margin: 12mm 12mm 14mm; }
+  :root {
+    --surface: #fff; --text: #000; --muted: #444; --primary: #1f4fa8; --border: #bbb;
+  }
+  html, body { height: auto; background: #fff; }
+  .phone { height: auto; max-width: none; margin: 0; border: none; border-radius: 0; box-shadow: none; overflow: visible; }
+  .phone > :not(.summary-sheet) { display: none !important; }
+  .summary-sheet { position: static; display: block; }
+  .summary-actions, .summary-buttons { display: none; }
+  .summary-doc { overflow: visible; padding: 0; font-size: 10.5pt; line-height: 1.4; }
+  .summary-doc h2 { font-size: 15pt; }
+  .summary-doc h3 { font-size: 11pt; }
+  .summary-doc section { margin-top: 9pt; }
+  .summary-doc h3 { break-after: avoid; }
+  .summary-doc li { break-inside: avoid; }
+  /* 병기: 베트남어 | 한국어 두 칸 */
+  .summary-doc.both { font-size: 9.5pt; line-height: 1.3; }
+  .summary-doc.both section { margin-top: 6pt; }
+  .summary-doc.both footer { margin-top: 8pt; padding-top: 5pt; font-size: 8pt; }
+  .summary-doc.both li { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10pt; margin-bottom: 1.5pt; }
+  .summary-doc.both li .ko { display: block; }
+  .summary-doc li { margin-bottom: 2pt; }
+  .summary-cards, .summary-doc footer { font-size: 8.5pt; }
+}

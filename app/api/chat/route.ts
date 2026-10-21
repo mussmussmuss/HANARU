@@ -3,6 +3,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { anthropicClient } from "@/lib/anthropic";
 import { runChat, type ChatMessage } from "@/lib/chat";
+import { errorCode, json, rateLimited } from "@/lib/guard";
 
 export const runtime = "nodejs";
 export const maxDuration = 120;
@@ -10,19 +11,6 @@ export const maxDuration = 120;
 const MAX_TURNS = 40;
 const MAX_USER_CHARS = 1500;
 const MAX_ASSISTANT_CHARS = 8000;
-
-// 데모 공개 링크용 간단한 요청 제한 (서버 인스턴스별, IP당 10분에 20회)
-const WINDOW_MS = 10 * 60 * 1000;
-const LIMIT = 20;
-const hits = new Map<string, number[]>();
-
-function rateLimited(ip: string): boolean {
-  const now = Date.now();
-  const recent = (hits.get(ip) ?? []).filter((t) => now - t < WINDOW_MS);
-  recent.push(now);
-  hits.set(ip, recent);
-  return recent.length > LIMIT;
-}
 
 function validate(body: unknown): ChatMessage[] | null {
   const msgs = (body as { messages?: unknown })?.messages;
@@ -38,22 +26,10 @@ function validate(body: unknown): ChatMessage[] | null {
   return msgs.map((m) => ({ role: m.role, content: m.content }));
 }
 
-function json(status: number, body: object) {
-  return Response.json(body, { status });
-}
-
-function errorCode(err: unknown): string {
-  if (err instanceof Anthropic.AuthenticationError) return "auth";
-  if (err instanceof Anthropic.RateLimitError) return "rate_limited";
-  if (err instanceof Anthropic.APIError && (err.status === 529 || err.status === 503)) return "overloaded";
-  return "server";
-}
-
 export async function POST(req: Request) {
   if (!process.env.ANTHROPIC_API_KEY) return json(503, { error: "no_api_key" });
 
-  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "local";
-  if (rateLimited(ip)) return json(429, { error: "too_many_requests" });
+  if (rateLimited(req, "chat", 20)) return json(429, { error: "too_many_requests" });
 
   const messages = validate(await req.json().catch(() => null));
   if (!messages) return json(400, { error: "bad_request" });
