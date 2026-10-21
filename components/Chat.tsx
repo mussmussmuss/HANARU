@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { parseAnswer } from "@/lib/answer";
+import { parseAnswer, questionLang, type QuestionLang } from "@/lib/answer";
 import CardSheet, { type CardMeta } from "@/components/CardSheet";
 
 type Message =
   | { role: "user"; text: string }
-  | { role: "bot"; raw: string; cards: string[]; streaming?: boolean }
+  | { role: "bot"; raw: string; cards: string[]; streaming?: boolean; lang?: QuestionLang }
   | { role: "notice"; text: string; retry?: boolean };
 
 const WELCOME_RAW =
@@ -43,6 +43,10 @@ const TOOL_LABEL: Record<string, string> = {
 
 type Bot = Extract<Message, { role: "bot" }>;
 
+// 답 표시 방식: both = 베트남어·한국어 병기, auto = 질문한 언어로만
+type LangMode = "both" | "auto";
+const LANG_MODE_KEY = "hanaru.langMode";
+
 export default function Chat({ cardCount, cardMeta }: { cardCount: number; cardMeta: Record<string, CardMeta> }) {
   const [messages, setMessages] = useState<Message[]>(START);
   const [input, setInput] = useState("");
@@ -50,9 +54,24 @@ export default function Chat({ cardCount, cardMeta }: { cardCount: number; cardM
   const [status, setStatus] = useState<string | null>(null);
   const [openCard, setOpenCard] = useState<string | null>(null);
   const [summaryNote, setSummaryNote] = useState(false);
+  const [langMode, setLangMode] = useState<LangMode>("both");
   const endRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const abortRef = useRef<AbortController | null>(null);
+
+  useEffect(() => {
+    try {
+      if (localStorage.getItem(LANG_MODE_KEY) === "auto") setLangMode("auto");
+    } catch {}
+  }, []);
+
+  function toggleLangMode() {
+    const next = langMode === "both" ? "auto" : "both";
+    setLangMode(next);
+    try {
+      localStorage.setItem(LANG_MODE_KEY, next);
+    } catch {}
+  }
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -118,7 +137,9 @@ export default function Chat({ cardCount, cardMeta }: { cardCount: number; cardM
         fail(err.error ?? "default");
         return;
       }
-      setMessages((l) => [...l, { role: "bot", raw: "", cards: [], streaming: true }]);
+      const lastUser = [...list].reverse().find((m) => m.role === "user");
+      const lang = lastUser?.role === "user" ? questionLang(lastUser.text) : "both";
+      setMessages((l) => [...l, { role: "bot", raw: "", cards: [], streaming: true, lang }]);
       const reader = res.body.getReader();
       const decoder = new TextDecoder();
       let buffer = "";
@@ -196,6 +217,10 @@ export default function Chat({ cardCount, cardMeta }: { cardCount: number; cardM
             Tóm tắt
             <small>요약</small>
           </button>
+          <button onClick={toggleLangMode} aria-label="Ngôn ngữ trả lời · 답변 언어">
+            {langMode === "both" ? "VI+KO" : "Tự động"}
+            <small>{langMode === "both" ? "병기" : "질문 언어"}</small>
+          </button>
           <button onClick={reset} disabled={!started}>
             Mới
             <small>새 대화</small>
@@ -227,7 +252,11 @@ export default function Chat({ cardCount, cardMeta }: { cardCount: number; cardM
             );
           }
           const a = parseAnswer(m.raw);
-          if (m.streaming && !a.vi && !a.ko && !a.raw) {
+          // 질문 언어로만 보기: 그 언어 답이 비어 있으면(형식 오류 등) 병기로 보여 준다
+          const only = langMode === "auto" && m.lang && m.lang !== "both" ? m.lang : null;
+          const shown = only && a[only] ? only : null;
+          const waiting = only && !a[only] && !a.raw;
+          if (m.streaming && ((!a.vi && !a.ko && !a.raw) || waiting)) {
             return (
               <div key={i} className="bubble bot typing">
                 <span className="dots" aria-hidden="true"><i /><i /><i /></span>
@@ -241,10 +270,14 @@ export default function Chat({ cardCount, cardMeta }: { cardCount: number; cardM
               {a.raw !== undefined ? (
                 <div>{a.raw}</div>
               ) : (
-                <>
-                  <div>{a.vi}</div>
-                  {a.ko && <div className="ko">{a.ko}</div>}
-                </>
+                shown ? (
+                  <div>{a[shown]}</div>
+                ) : (
+                  <>
+                    <div>{a.vi}</div>
+                    {a.ko && <div className="ko">{a.ko}</div>}
+                  </>
+                )
               )}
               {cited.length > 0 && (
                 <div className="chips">

@@ -30,3 +30,13 @@ export function parseAnswer(text: string): ParsedAnswer {
   }
   return { vi: vi ?? "", ko: ko ?? "", cards };
 }
+
+export type QuestionLang = "vi" | "ko" | "both";
+
+// 한글이 있으면 한국어, 한글 없이 라틴 문자만 있으면 베트남어, 둘 다 있으면(빠른 질문 등) 병기
+export function questionLang(text: string): QuestionLang {
+  const ko = /[\u3131-\u318E\uAC00-\uD7A3]/.test(text);
+  const latin = /[A-Za-zÀ-ỹ]/.test(text.replace(/\b(D-\d+(-\d+)?|TOPIK|KIIP|IBT|GKS)\b/gi, ""));
+  if (ko && latin) return "both";
+  return ko ? "ko" : "vi";
+}
