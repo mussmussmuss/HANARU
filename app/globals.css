@@ -185,3 +185,22 @@ html, body {
 }
 
 .composer button:disabled { opacity: 0.4; cursor: default; }
+
+.bubble.typing { color: var(--muted); font-size: 14px; }
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.chip {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+.quick button:disabled { opacity: 0.5; cursor: default; }
