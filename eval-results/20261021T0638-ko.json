@@ -1,0 +1,171 @@
+[
+ {
+  "q": {
+   "id": "E42",
+   "type": "직접",
+   "q_ko": "어학연수 3개월 차인데 알바 신청할 수 있어요?",
+   "q_vi": "Em học tiếng được 3 tháng, xin làm thêm được chưa?",
+   "profile": {
+    "과정": "D-4-1",
+    "입국후": "3개월"
+   },
+   "cards": [
+    "W02"
+   ],
+   "must": [
+    "6개월 경과 후 가능",
+    "아직 불가"
+   ],
+   "must_not": [],
+   "ask": []
+  },
+  "chat": {
+   "text": "<vi>\nTiếc là bây giờ bạn chưa xin phép làm thêm được. Học viên tiếng (D-4-1, D-4-7) chỉ được xin phép làm thêm sau khi đủ 6 tháng kể từ ngày nhập cảnh (hoặc ngày đổi sang D-4). Bạn mới ở tháng thứ 3 nên cần đợi thêm.\n\nLưu ý quan trọng: bạn phải được cấp phép làm thêm \"trước khi\" bắt đầu làm. Nếu làm mà không có giấy phép thì cả bạn và chủ quán đều có thể bị phạt.\n\nKhi đủ 6 tháng, mình có thể giúp bạn tính số giờ được làm mỗi tuần theo chứng chỉ tiếng Hàn của bạn. Quyết định cuối cùng thuộc về cơ quan xuất nhập cảnh nhé.\n</vi>\n<ko>\n아쉽지만 지금은 아직 아르바이트 허가를 신청할 수 없어요. 어학연수생(D-4-1, D-4-7)은 입국한 날(또는 D-4로 바뀐 날)부터 6개월이 지나야 시간제취업 허가를 신청할 수 있어요. 지금 3개월 차라서 조금 더 기다려야 해요.\n\n중요한 점이 있어요. 아르바이트는 일을 시작하기 '전에' 꼭 허가를 받아야 해요. 허가 없이 일하면 학생과 사장님 모두 처벌받을 수 있어요.\n\n6개월이 지나면 한국어 성적에 맞춰 일주일에 몇 시간까지 일할 수 있는지 계산해 줄게요. 최종 결정은 출입국에서 해요.\n</ko>\n<cards>W02,W04,W01,M01</cards>",
+   "cards": [
+    "W02",
+    "W04",
+    "W01",
+    "M01"
+   ],
+   "unknownCards": [],
+   "refused": false,
+   "toolLog": [
+    {
+     "name": "part_time_hours",
+     "status": "not_eligible",
+     "cardIds": [
+      "W02",
+      "W04"
+     ],
+     "output": "{\"status\":\"not_eligible\",\"cardIds\":[\"W02\",\"W04\"],\"facts\":[\"어학연수(D-4-1, D-4-7)는 자격 변경일(사증 소지자는 입국일)로부터 6개월이 지난 후 시간제취업 신청 가능\",\"지금은 3개월이라 아직 신청할 수 없음\"],\"cautions\":[\"아르바이트 전에 반드시 시간제취업 허가를 받아야 함. 허가 없이 일하면 학생과 고용주 모두 처벌될 수 있음 (W01)\"]}"
+    }
+   ],
+   "usage": [
+    {
+     "input": 102,
+     "cacheRead": 43668,
+     "cacheWrite": 0,
+     "output": 234
+    },
+    {
+     "input": 531,
+     "cacheRead": 43668,
+     "cacheWrite": 0,
+     "output": 645
+    }
+   ]
+  },
+  "grade": {
+   "must": [
+    {
+     "item": "6개월 경과 후 가능",
+     "evidence": "답변에 입국(또는 D-4 변경)일부터 6개월이 지나야 신청 가능이라고 명시되어 있어 통과.",
+     "pass": true
+    },
+    {
+     "item": "아직 불가",
+     "evidence": "지금 3개월 차라서 아직 신청할 수 없다고 명시되어 있어 통과.",
+     "pass": true
+    }
+   ],
+   "must_not": [],
+   "asked": [],
+   "stated_number_before_asking": false,
+   "unsupported_claims": [
+    {
+     "claim": "6개월 후 한국어 성적에 맞춰 주당 몇 시간까지 계산해 준다",
+     "why": "기능 제공 약속으로 카드 사실이 아니며 카드상 근거 없는 서비스 약속임"
+    }
+   ],
+   "vi_ko_consistent": true,
+   "comment": "6개월 기준과 아직 불가 판정은 카드와 일치하고 허가 전 취업 경고도 적절함. 다만 시간 계산 제공 약속은 카드에 없는 내용이라 감점. 도구결과와도 일치."
+  },
+  "pass": true,
+  "formatOk": true,
+  "citedExpected": true,
+  "chatCost": 0.0375792,
+  "gradeCost": 0.00066872,
+  "ms": 12608
+ },
+ {
+  "q": {
+   "id": "E44",
+   "type": "직접",
+   "q_ko": "공장 아르바이트 해도 돼요? TOPIK 4급 있어요.",
+   "q_vi": "Em làm thêm ở nhà máy được không? Em có TOPIK 4.",
+   "profile": {
+    "TOPIK": 4
+   },
+   "cards": [
+    "W05",
+    "W06"
+   ],
+   "must": [
+    "제조업은 한국어능력 4급 이상이면 허용",
+    "건설업은 불가",
+    "요건 준수 확인서 필요"
+   ],
+   "must_not": [],
+   "ask": []
+  },
+  "chat": {
+   "text": "<vi>\nĐược nhé! Du học sinh có TOPIK 4 trở lên thì có thể làm thêm ở nhà máy (ngành sản xuất). Nhưng bạn phải xin giấy phép làm thêm tại cơ quan xuất nhập cảnh trước khi bắt đầu làm. Làm mà không có giấy phép có thể bị phạt tối đa 30 triệu won.\n\nNếu trên giấy phép kinh doanh của nơi làm có ghi ngành sản xuất hoặc xây dựng, bạn cần nộp thêm \"giấy xác nhận tuân thủ điều kiện làm thêm\". Nếu đến cơ quan xuất nhập cảnh trực tiếp, bạn phải đặt lịch hẹn trên HiKorea trước. Ngoài ra, công việc xây dựng thì không được làm.\n\nLưu ý: nếu bạn đang có visa tìm việc sau tốt nghiệp (D-10-1) thì TOPIK không được tính khi làm nhà máy. Trường hợp này phải hoàn thành giai đoạn 4 chương trình hội nhập xã hội (KIIP) trở lên. Bạn đang có visa nào (D-2, D-4 hay D-10-1)? Bạn cho mình biết thì mình sẽ kiểm tra cả số giờ được làm mỗi tuần nhé.\n\nQuyết định cuối cùng thuộc về cơ quan xuất nhập cảnh.\n</vi>\n<ko>\n네, 할 수 있어요! 유학생은 TOPIK 4급 이상이면 공장(제조업) 아르바이트를 할 수 있어요. 하지만 일을 시작하기 전에 출입국에서 시간제취업 허가를 먼저 받아야 해요. 허가 없이 일하면 범칙금이 최대 3,000만원까지 나올 수 있어요.\n\n일하는 곳의 사업자등록증에 제조업이나 건설업이 적혀 있으면 '시간제취업 요건 준수 확인서'도 함께 내야 해요. 출입국에 직접 갈 때는 하이코리아에서 방문예약을 먼저 하세요. 그리고 건설업 일은 할 수 없어요.\n\n주의할 점이 하나 있어요. 졸업 후 구직비자(D-10-1)라면 공장 일에 TOPIK은 인정되지 않아요. 이때는 사회통합프로그램(KIIP) 4단계 이상을 이수해야 해요. 지금 어떤 비자(D-2, D-4, D-10-1)를 가지고 있어요? 알려주면 주당 몇 시간까지 일할 수 있는지도 확인해 줄게요.\n\n최종 허가 여부는 관할 출입국이 결정해요.\n</ko>\n<cards>W06,W05,W01,W07,W11,A09,M01</cards>",
+   "cards": [
+    "W06",
+    "W05",
+    "W01",
+    "W07",
+    "W11",
+    "A09",
+    "M01"
+   ],
+   "unknownCards": [],
+   "refused": false,
+   "toolLog": [],
+   "usage": [
+    {
+     "input": 105,
+     "cacheRead": 43668,
+     "cacheWrite": 0,
+     "output": 1395
+    }
+   ]
+  },
+  "grade": {
+   "must": [
+    {
+     "item": "제조업은 한국어능력 4급 이상이면 허용",
+     "evidence": "베트남어·한국어 답 모두 TOPIK 4급 이상이면 공장 아르바이트 가능이라고 함. W05·W06 카드와 일치",
+     "pass": true
+    },
+    {
+     "item": "건설업은 불가",
+     "evidence": "베트남어 'công trường xây dựng' 언급은 없으나 '건설 일은 할 수 없어요'(한국어)·'công việc xây dựng thì không được làm'(베트남어)로 명시",
+     "pass": true
+    },
+    {
+     "item": "요건 준수 확인서 필요",
+     "evidence": "사업자등록증에 제조업·건설업 포함 시 '시간제취업 요건 준수 확인서' 제출이라고 양쪽 답에 있음. W07 근거와 일치",
+     "pass": true
+    }
+   ],
+   "must_not": [],
+   "asked": [],
+   "stated_number_before_asking": false,
+   "unsupported_claims": [
+    {
+     "claim": "D-10-1 졸업 구직비자 소지자는 공장 일에 TOPIK이 인정되지 않고 KIIP 4단계 이상이어야 한다",
+     "why": "W11 카드는 D-10-1 대상에 KIIP 4단계 이상 또는 TOPIK 4급 이상을 함께 요건으로 두고, 제조업은 KIIP 4단계 이상만(TOPIK 소지자 제외)이라고 함. 카드 취지에 가까우나 답은 '제조업 TOPIK 불인정'을 단정하며 W11 원문과 같은 표현이라 근거는 있음. 다만 '할 수 없다'가 아닌 조건 차이를 설명하는 것으로 충분히 뒷받침됨"
+    }
+   ],
+   "vi_ko_consistent": true,
+   "comment": "제조업 TOPIK 4급 허용, 건설업 불가, 확인서 필요 등 핵심 must 항목을 모두 포함했고 되묻기 없이 D-10-1 차이를 안내함. 허가 전 취업 금지·범칙금·HiKorea 예약 등은 카드 근거와 일치함."
+  },
+  "pass": true,
+  "formatOk": true,
+  "citedExpected": true,
+  "chatCost": 0.0370536,
+  "gradeCost": 0.00086722,
+  "ms": 19357
+ }
+]

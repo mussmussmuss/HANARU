@@ -39,6 +39,20 @@ export async function runChat(
 ): Promise<ChatResult> {
   const toolLog: ToolLog = [];
   const usage: Usage[] = [];
+  // 도구를 부른 뒤 글 없이 턴을 끝내는 경우가 있어(E42) 빈 답이면 한 번 더 시도한다
+  for (let attempt = 0; ; attempt++) {
+    const result = await runOnce(client, messages, onEvent, toolLog, usage);
+    if (result.refused || result.text.trim() !== "" || attempt >= 1) return result;
+  }
+}
+
+async function runOnce(
+  client: Anthropic,
+  messages: ChatMessage[],
+  onEvent: (e: ChatEvent) => void,
+  toolLog: ToolLog,
+  usage: Usage[],
+): Promise<ChatResult> {
   let text = "";
 
   const runner = client.beta.messages.toolRunner({

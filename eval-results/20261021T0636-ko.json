@@ -1,0 +1,160 @@
+[
+ {
+  "q": {
+   "id": "E42",
+   "type": "직접",
+   "q_ko": "어학연수 3개월 차인데 알바 신청할 수 있어요?",
+   "q_vi": "Em học tiếng được 3 tháng, xin làm thêm được chưa?",
+   "profile": {
+    "과정": "D-4-1",
+    "입국후": "3개월"
+   },
+   "cards": [
+    "W02"
+   ],
+   "must": [
+    "6개월 경과 후 가능",
+    "아직 불가"
+   ],
+   "must_not": [],
+   "ask": []
+  },
+  "chat": {
+   "text": "<vi>\nTiếc quá, hiện tại bạn chưa thể xin phép làm thêm. Học viên tiếng (D-4-1, D-4-7) chỉ được xin phép làm thêm sau khi đủ 6 tháng kể từ ngày nhập cảnh (hoặc ngày đổi sang D-4 nếu bạn đổi visa ở Hàn Quốc). Bạn mới được 3 tháng nên cần đợi thêm.\n\nLưu ý: bạn phải có giấy phép làm thêm \"trước khi\" bắt đầu làm. Nếu làm mà không có giấy phép thì cả bạn và chủ quán đều có thể bị phạt.\n\nKhi đủ 6 tháng, số giờ được làm sẽ phụ thuộc vào trình độ tiếng Hàn của bạn. Lúc đó bạn có muốn mình tính giúp không? Quyết định cuối cùng thuộc về cơ quan xuất nhập cảnh có thẩm quyền.\n</vi>\n<ko>\n아쉽지만 지금은 아직 신청할 수 없어요. 어학연수생(D-4-1, D-4-7)은 입국한 날(한국에서 D-4로 자격을 바꿨다면 그 변경일)부터 6개월이 지나야 시간제취업 허가를 신청할 수 있어요. 지금 3개월 차니까 조금 더 기다려야 해요.\n\n꼭 기억하세요. 아르바이트는 일을 시작하기 '전에' 허가를 받아야 해요. 허가 없이 일하면 학생과 사장님 모두 처벌받을 수 있어요.\n\n6개월이 지나면 한국어 성적에 따라 일할 수 있는 시간이 달라져요. 그때 같이 계산해 볼까요? 최종 결정은 관할 출입국이 해요.\n</ko>\n<cards>W02,W04,W01,M01</cards>",
+   "cards": [
+    "W02",
+    "W04",
+    "W01",
+    "M01"
+   ],
+   "unknownCards": [],
+   "refused": false,
+   "toolLog": [
+    {
+     "name": "part_time_hours",
+     "status": "not_eligible",
+     "cardIds": [
+      "W02",
+      "W04"
+     ],
+     "output": "{\"status\":\"not_eligible\",\"cardIds\":[\"W02\",\"W04\"],\"facts\":[\"어학연수(D-4-1, D-4-7)는 자격 변경일(사증 소지자는 입국일)로부터 6개월이 지난 후 시간제취업 신청 가능\",\"지금은 3개월이라 아직 신청할 수 없음\"],\"cautions\":[\"아르바이트 전에 반드시 시간제취업 허가를 받아야 함. 허가 없이 일하면 학생과 고용주 모두 처벌될 수 있음 (W01)\"]}"
+    }
+   ],
+   "usage": [
+    {
+     "input": 102,
+     "cacheRead": 43668,
+     "cacheWrite": 0,
+     "output": 279
+    },
+    {
+     "input": 576,
+     "cacheRead": 43668,
+     "cacheWrite": 0,
+     "output": 675
+    }
+   ]
+  },
+  "grade": {
+   "must": [
+    {
+     "item": "6개월 경과 후 가능",
+     "evidence": "챗봇 답은 어학연수생이 입국(또는 D-4 변경) 후 6개월이 지나야 신청 가능하다고 함. 카드 W02와 일치",
+     "pass": true
+    },
+    {
+     "item": "아직 불가",
+     "evidence": "3개월 차이므로 지금은 신청 불가라고 명확히 답함",
+     "pass": true
+    }
+   ],
+   "must_not": [],
+   "asked": [],
+   "stated_number_before_asking": false,
+   "unsupported_claims": [],
+   "vi_ko_consistent": true,
+   "comment": "6개월 규정과 현재 불가 판정을 정확히 전달. 베트남어·한국어 내용 일치. 되묻기 항목 없음."
+  },
+  "pass": true,
+  "formatOk": true,
+  "citedExpected": true,
+  "chatCost": 0.0392592,
+  "gradeCost": 0.0050237,
+  "ms": 15087
+ },
+ {
+  "q": {
+   "id": "E44",
+   "type": "직접",
+   "q_ko": "공장 아르바이트 해도 돼요? TOPIK 4급 있어요.",
+   "q_vi": "Em làm thêm ở nhà máy được không? Em có TOPIK 4.",
+   "profile": {
+    "TOPIK": 4
+   },
+   "cards": [
+    "W05",
+    "W06"
+   ],
+   "must": [
+    "제조업은 한국어능력 4급 이상이면 허용",
+    "건설업은 불가",
+    "요건 준수 확인서 필요"
+   ],
+   "must_not": [],
+   "ask": []
+  },
+  "chat": {
+   "text": "<vi>\nCó thể được bạn nhé. Với du học sinh, làm thêm ở nhà máy (ngành sản xuất) bình thường bị cấm, nhưng nếu có năng lực tiếng Hàn tương đương cấp 4 trở lên thì được phép. TOPIK 4 của bạn đáp ứng điều kiện này.\n\nBạn cần lưu ý mấy điều sau:\n- Phải xin phép làm thêm tại cơ quan xuất nhập cảnh \"trước khi\" bắt đầu làm. Nếu làm mà không có giấy phép, bạn có thể bị phạt tối đa 30 triệu won, và chủ cũng có thể bị phạt.\n- Nếu giấy đăng ký kinh doanh của nơi làm có ghi ngành sản xuất hoặc xây dựng, bạn phải nộp thêm \"giấy xác nhận tuân thủ điều kiện làm thêm\".\n- Ngành xây dựng thì không được làm. Làm qua công ty phái cử cũng không được.\n\nCòn một điều nữa: nếu bạn đang có visa tìm việc sau tốt nghiệp (D-10-1) thì chỉ người đã hoàn thành giai đoạn 4 KIIP trở lên mới được làm ở nhà máy, có TOPIK thôi thì không được. Hiện bạn đang có visa gì vậy (D-2, D-4 hay D-10-1)?\n\nQuyết định cuối cùng thuộc về cơ quan xuất nhập cảnh có thẩm quyền.\n</vi>\n<ko>\n네, 될 수 있어요. 유학생은 원래 공장(제조업) 아르바이트를 할 수 없는데, 한국어능력 4급 상당 이상이면 예외로 할 수 있어요. TOPIK 4급이 있으니 이 조건은 채웠어요.\n\n몇 가지만 주의하세요:\n- 일을 시작하기 \"전에\" 출입국에서 시간제취업 허가를 받아야 해요. 허가 없이 일하면 범칙금이 최대 3,000만원까지 나오고, 사장님도 처벌받을 수 있어요.\n- 일하는 곳 사업자등록증에 제조업이나 건설업이 들어 있으면 '시간제취업 요건 준수 확인서'를 더 내야 해요.\n- 건설업은 안 돼요. 파견회사를 통해 일하는 것도 안 돼요.\n\n그리고 하나 더 있어요. 졸업 후 구직비자(D-10-1)라면 공장 일은 사회통합프로그램(KIIP) 4단계 이상 이수자만 할 수 있고, TOPIK만 있으면 안 돼요. 지금 가진 비자가 무엇인지 알려줄래요? (D-2, D-4, D-10-1 중)\n\n최종 결정은 관할 출입국이 해요.\n</ko>\n<cards>W06,W05,W01,W07,W11,M01</cards>",
+   "cards": [
+    "W06",
+    "W05",
+    "W01",
+    "W07",
+    "W11",
+    "M01"
+   ],
+   "unknownCards": [],
+   "refused": false,
+   "toolLog": [],
+   "usage": [
+    {
+     "input": 105,
+     "cacheRead": 43668,
+     "cacheWrite": 0,
+     "output": 1348
+    }
+   ]
+  },
+  "grade": {
+   "must": [
+    {
+     "item": "제조업은 한국어능력 4급 이상이면 허용",
+     "evidence": "베트남어·한국어 답 모두 TOPIK 4급 이상이면 공장 일 허용이라고 명시(W05·W06 카드와 일치)",
+     "pass": true
+    },
+    {
+     "item": "건설업은 불가",
+     "evidence": "'건설업은 불가'/'Ngành xây dựng thì không được làm'로 명시",
+     "pass": true
+    },
+    {
+     "item": "요건 준수 확인서 필요",
+     "evidence": "사업자등록증에 제조업·건설업 포함 시 '시간제취업 요건 준수 확인서' 필요라고 안내(W07 카드와 일치)",
+     "pass": true
+    }
+   ],
+   "must_not": [],
+   "asked": [],
+   "stated_number_before_asking": false,
+   "unsupported_claims": [],
+   "vi_ko_consistent": true,
+   "comment": "카드 근거와 일치하게 답했고 must 항목 모두 충족. 되묻기 항목은 없음. 비자 종류를 묻는 추가 질문은 카드 근거가 있는 D-10-1 안내에 따른 것으로 문제 없음."
+  },
+  "pass": true,
+  "formatOk": true,
+  "citedExpected": true,
+  "chatCost": 0.036113599999999996,
+  "gradeCost": 0.00070042,
+  "ms": 15355
+ }
+]

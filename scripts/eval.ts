@@ -45,8 +45,9 @@ function arg(name: string): string | undefined {
 }
 
 const Grade = z.object({
-  must: z.array(z.object({ item: z.string(), pass: z.boolean(), evidence: z.string() })),
-  must_not: z.array(z.object({ item: z.string(), violated: z.boolean(), evidence: z.string() })),
+  // 근거를 먼저 쓰고 판정하게 한다 (E44: 근거에는 "위반 아님"이라 쓰고 violated=true로 낸 사례)
+  must: z.array(z.object({ item: z.string(), evidence: z.string(), pass: z.boolean() })),
+  must_not: z.array(z.object({ item: z.string(), evidence: z.string(), violated: z.boolean() })),
   asked: z.array(z.object({ item: z.string(), asked: z.boolean() })),
   stated_number_before_asking: z.boolean(),
   unsupported_claims: z.array(z.object({ claim: z.string(), why: z.string() })),
@@ -68,7 +69,7 @@ const GRADER_SYSTEM = `당신은 베트남 유학생용 비자 안내 챗봇의 
 - <도구결과>는 규정 카드 표와 2025년 인증대학 명단을 계산한 결과다. 답이 도구결과와 같으면 카드로 뒷받침되는 것으로 본다.
 - unsupported_claims: 답 속 사실(숫자, 기간, 서류, 기관, 절차, 웹사이트 등) 중 <규정카드>나 <도구결과>로 뒷받침되지 않는 것. 인사·공감·되묻기 문장은 제외. 카드 내용을 쉽게 바꿔 말한 것은 지원되는 것으로 본다.
 - vi_ko_consistent: 베트남어와 한국어 답의 내용·숫자가 같으면 true.
-- evidence와 comment는 한국어로 짧게.
+- evidence와 comment는 한국어로 짧게. pass·violated는 evidence에 쓴 판단과 반드시 같아야 한다.
 
 <규정카드>
 ${ALL_CARDS}
