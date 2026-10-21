@@ -17,12 +17,20 @@ const WELCOME_RAW =
 
 const START: Message[] = [{ role: "bot", raw: WELCOME_RAW, cards: [] }];
 
-// 빠른 질문: 평가 질문 세트에 있는 대표 질문들
+// 추천 질문: 준비 → 신청 → 입국 후 → 졸업 순서. 모두 규정 카드로 답할 수 있는 질문
 const QUICK = [
   { vi: "Visa D-2 và D-4 khác nhau thế nào?", ko: "D-2와 D-4는 뭐가 달라요?" },
   { vi: "Cần chứng minh tài chính bao nhiêu?", ko: "재정 증명은 얼마나 필요해요?" },
-  { vi: "Du học sinh được làm thêm mấy giờ?", ko: "유학생은 아르바이트 몇 시간 할 수 있어요?" },
+  { vi: "Xin visa cần những giấy tờ gì?", ko: "비자 신청할 때 어떤 서류가 필요해요?" },
+  { vi: "Học đại học cần TOPIK mấy?", ko: "학사과정은 TOPIK 몇 급이 필요해요?" },
+  { vi: "Trường của mình có phải trường được chứng nhận không?", ko: "우리 학교가 인증대학인지 알고 싶어요" },
+  { vi: "Bao lâu thì có kết quả visa?", ko: "비자 결과는 얼마나 걸려요?" },
   { vi: "Sau khi nhập cảnh phải làm gì?", ko: "입국하고 나서 뭘 해야 해요?" },
+  { vi: "Đăng ký người nước ngoài trong bao lâu?", ko: "외국인등록은 언제까지 해야 해요?" },
+  { vi: "Du học sinh được làm thêm mấy giờ?", ko: "유학생은 아르바이트 몇 시간 할 수 있어요?" },
+  { vi: "Từ học tiếng (D-4) chuyển sang D-2 được không?", ko: "어학연수(D-4)에서 학위과정(D-2)으로 바꿀 수 있어요?" },
+  { vi: "Gia hạn thời gian lưu trú thế nào?", ko: "체류기간 연장은 어떻게 해요?" },
+  { vi: "Tốt nghiệp xong muốn ở lại tìm việc thì sao?", ko: "졸업 후 한국에서 일자리를 찾으려면요?" },
 ];
 
 const ERRORS: Record<string, string> = {
@@ -53,7 +61,7 @@ type Bot = Extract<Message, { role: "bot" }>;
 type LangMode = "both" | "auto";
 const LANG_MODE_KEY = "hanaru.langMode";
 
-export default function Chat({ cardCount, cardMeta }: { cardCount: number; cardMeta: Record<string, CardMeta> }) {
+export default function Chat({ cardMeta }: { cardMeta: Record<string, CardMeta> }) {
   const [messages, setMessages] = useState<Message[]>(START);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
@@ -66,6 +74,7 @@ export default function Chat({ cardCount, cardMeta }: { cardCount: number; cardM
   const endRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const abortRef = useRef<AbortController | null>(null);
+  const quickRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     try {
@@ -256,7 +265,7 @@ export default function Chat({ cardCount, cardMeta }: { cardCount: number; cardM
         <div className="avatar">H</div>
         <div className="header-text">
           <h1>HANARU</h1>
-          <p>Hỏi đáp visa · 유학 비자 Q&amp;A</p>
+          <p>Visa du học · 비자</p>
         </div>
         <div className="header-actions">
           <button onClick={() => openSummary()} disabled={!answered || busy}>
@@ -276,15 +285,18 @@ export default function Chat({ cardCount, cardMeta }: { cardCount: number; cardM
 
       {/* M01 고지: 대화가 길어져도 보이도록 스크롤 영역 밖 상단에 고정 */}
       <p className="m01-bar">
-        Quyết định cuối cùng thuộc về cơ quan đại diện và xuất nhập cảnh. · 최종 결정은 공관·출입국이 해요.
+        <span>Quyết định cuối cùng thuộc về cơ quan đại diện và xuất nhập cảnh.</span>
+        <span>최종 결정은 공관·출입국이 해요.</span>
       </p>
 
       <section className="messages" aria-live="polite">
-        <p className="notice">
-          Bản demo · 데모 버전 — {cardCount} quy định đã kiểm tra · 검수된 규정 {cardCount}개 기준
-        </p>
-        <Link className="form-link" href="/form/visa">
-          Điền đơn xin visa (bản nháp) · 사증발급신청서 초안 작성 →
+        <Link className="form-entry" href="/form/visa">
+          <span className="form-entry-icon" aria-hidden="true">✎</span>
+          <span className="form-entry-text">
+            Điền đơn xin visa (bản nháp)
+            <small>사증발급신청서 초안 작성</small>
+          </span>
+          <span className="form-entry-arrow" aria-hidden="true">→</span>
         </Link>
         {messages.map((m, i) => {
           if (m.role === "user") return <div key={i} className="bubble user">{m.text}</div>;
@@ -307,37 +319,43 @@ export default function Chat({ cardCount, cardMeta }: { cardCount: number; cardM
           const waiting = only && !a[only] && !a.raw;
           if (m.streaming && ((!a.vi && !a.ko && !a.raw) || waiting)) {
             return (
-              <div key={i} className="bubble bot typing">
-                <span className="dots" aria-hidden="true"><i /><i /><i /></span>
-                {status && <span>{status}</span>}
+              <div key={i} className="bot-row">
+                <span className="avatar small" aria-hidden="true">H</span>
+                <div className="bubble bot typing">
+                  <span className="dots" aria-hidden="true"><i /><i /><i /></span>
+                  {status && <span>{status}</span>}
+                </div>
               </div>
             );
           }
           const cited = m.cards.filter((id) => cardMeta[id]);
           return (
-            <div key={i} className="bubble bot">
-              {a.raw !== undefined ? (
-                <div>{a.raw}</div>
-              ) : (
-                shown ? (
-                  <div>{a[shown]}</div>
+            <div key={i} className="bot-row">
+              <span className="avatar small" aria-hidden="true">H</span>
+              <div className="bubble bot">
+                {a.raw !== undefined ? (
+                  <div>{a.raw}</div>
                 ) : (
-                  <>
-                    <div>{a.vi}</div>
-                    {a.ko && <div className="ko">{a.ko}</div>}
-                  </>
-                )
-              )}
-              {cited.length > 0 && (
-                <div className="chips">
-                  <span className="chips-label">Căn cứ · 근거</span>
-                  {cited.map((id) => (
-                    <button key={id} className="chip" onClick={() => setOpenCard(id)}>
-                      <b>{id}</b> {cardMeta[id].title}
-                    </button>
-                  ))}
-                </div>
-              )}
+                  shown ? (
+                    <div>{a[shown]}</div>
+                  ) : (
+                    <>
+                      <div>{a.vi}</div>
+                      {a.ko && <div className="ko">{a.ko}</div>}
+                    </>
+                  )
+                )}
+                {cited.length > 0 && (
+                  <div className="chips">
+                    <span className="chips-label">Căn cứ · 근거</span>
+                    {cited.map((id) => (
+                      <button key={id} className="chip" onClick={() => setOpenCard(id)}>
+                        <b>{id}</b> {cardMeta[id].title}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           );
         })}
@@ -345,13 +363,22 @@ export default function Chat({ cardCount, cardMeta }: { cardCount: number; cardM
       </section>
 
       {!started && (
-        <nav className="quick" aria-label="Câu hỏi nhanh · 빠른 질문">
-          {QUICK.map((q) => (
-            <button key={q.ko} disabled={busy} onClick={() => send(`${q.vi}\n${q.ko}`)}>
-              {q.vi}
-              <small>{q.ko}</small>
-            </button>
-          ))}
+        <nav className="quick" aria-label="Câu hỏi gợi ý · 추천 질문">
+          <p className="quick-label">Câu hỏi gợi ý · 추천 질문 — vuốt để xem thêm · 넘겨서 더 보기</p>
+          <button type="button" className="quick-arrow left" aria-label="Trước · 이전" onClick={() => quickRef.current?.scrollBy({ left: -220, behavior: "smooth" })}>
+            ‹
+          </button>
+          <div className="quick-list" ref={quickRef}>
+            {QUICK.map((q) => (
+              <button key={q.ko} disabled={busy} onClick={() => send(`${q.vi}\n${q.ko}`)}>
+                {q.vi}
+                <small>{q.ko}</small>
+              </button>
+            ))}
+          </div>
+          <button type="button" className="quick-arrow right" aria-label="Sau · 다음" onClick={() => quickRef.current?.scrollBy({ left: 220, behavior: "smooth" })}>
+            ›
+          </button>
         </nav>
       )}
 
