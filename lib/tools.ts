@@ -11,13 +11,14 @@ const STAY = z.enum([
 const stayDescription =
   "체류자격 세부약호. D-2-1 전문학사, D-2-2 학사, D-2-3 석사, D-2-4 박사, D-2-5 연구과정, D-2-6 교환학생, D-2-7 일-학습연계, D-2-8 방문학생, D-4-1 한국어 연수, D-4-7 외국어 연수, D-10-1 졸업 후 구직";
 
-/** 도구가 실행될 때마다 근거 카드를 기록한다 (로그·검증용) */
-export type ToolLog = { name: string; status: RuleResult["status"]; cardIds: string[] }[];
+/** 도구가 실행될 때마다 근거 카드와 결과를 기록한다 (로그·검증용) */
+export type ToolLog = { name: string; status: RuleResult["status"]; cardIds: string[]; output: string }[];
 
 export function makeTools(log: ToolLog) {
   const record = (name: string, r: RuleResult) => {
-    log.push({ name, status: r.status, cardIds: r.cardIds });
-    return JSON.stringify(r);
+    const output = JSON.stringify(r);
+    log.push({ name, status: r.status, cardIds: r.cardIds, output });
+    return output;
   };
 
   const lookup = betaZodTool({

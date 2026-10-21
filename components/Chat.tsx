@@ -203,11 +203,14 @@ export default function Chat({ cardCount, cardMeta }: { cardCount: number; cardM
         </div>
       </header>
 
+      {/* M01 고지: 대화가 길어져도 보이도록 스크롤 영역 밖 상단에 고정 */}
+      <p className="m01-bar">
+        Quyết định cuối cùng thuộc về cơ quan đại diện và xuất nhập cảnh. · 최종 결정은 공관·출입국이 해요.
+      </p>
+
       <section className="messages" aria-live="polite">
         <p className="notice">
           Bản demo · 데모 버전 — {cardCount} quy định đã kiểm tra · 검수된 규정 {cardCount}개 기준
-          <br />
-          Quyết định cuối cùng thuộc về cơ quan đại diện và xuất nhập cảnh. · 최종 결정은 공관·출입국이 해요.
         </p>
         {messages.map((m, i) => {
           if (m.role === "user") return <div key={i} className="bubble user">{m.text}</div>;

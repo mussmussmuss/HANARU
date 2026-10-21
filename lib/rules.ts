@@ -446,11 +446,13 @@ export function financeRequirement(input: FinanceInput): FinanceResult {
   const { stay } = input;
 
   if (["D-2-1", "D-2-2", "D-2-3", "D-2-4", "D-2-5"].includes(stay)) {
+    const noPeriod = stay === "D-2-4" || stay === "D-2-5";
     if (!input.region) {
-      return { status: "need_info", cardIds: ["P11"], missing: ["학교 소재지(수도권/지방)"], facts: [], cautions: [] };
+      // 예치기간 면제는 소재지와 무관하므로 금액을 묻는 중에도 알려줄 수 있다
+      const facts = noPeriod ? [`예외: D-2-4~D-2-8 유학생은 최소 예치기간(3개월)을 채울 필요 없음 (${stay} 해당)`] : [];
+      return { status: "need_info", cardIds: ["P11"], missing: ["학교 소재지(수도권/지방)"], facts, cautions: [] };
     }
     const minBalance = input.region === "수도권" ? 20_000_000 : 16_000_000;
-    const noPeriod = stay === "D-2-4" || stay === "D-2-5";
     const facts = [
       `${input.region} 소재 대학 학위과정: 최소 ${manwon(minBalance)} 이상 잔고`,
       noPeriod

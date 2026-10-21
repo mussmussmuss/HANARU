@@ -45,8 +45,9 @@ function arg(name: string): string | undefined {
 }
 
 const Grade = z.object({
-  must: z.array(z.object({ item: z.string(), pass: z.boolean(), evidence: z.string() })),
-  must_not: z.array(z.object({ item: z.string(), violated: z.boolean(), evidence: z.string() })),
+  // 근거를 먼저 쓰고 판정하게 한다 (E44: 근거에는 "위반 아님"이라 쓰고 violated=true로 낸 사례)
+  must: z.array(z.object({ item: z.string(), evidence: z.string(), pass: z.boolean() })),
+  must_not: z.array(z.object({ item: z.string(), evidence: z.string(), violated: z.boolean() })),
   asked: z.array(z.object({ item: z.string(), asked: z.boolean() })),
   stated_number_before_asking: z.boolean(),
   unsupported_claims: z.array(z.object({ claim: z.string(), why: z.string() })),
@@ -64,15 +65,17 @@ const GRADER_SYSTEM = `당신은 베트남 유학생용 비자 안내 챗봇의 
 - must_not: 각 항목에 해당하는 말을 했으면 violated=true.
 - asked: 각 되묻기 항목을 학생에게 물어봤으면 asked=true. 되묻기 항목이 없으면 빈 배열.
 - stated_number_before_asking: 되묻기 항목이 있는 질문에서, 조건을 묻기 전에 특정 금액·시간을 단정했으면 true. 조건별 예시로 나눠 설명하며 묻는 것은 false.
-- unsupported_claims: 답 속 사실(숫자, 기간, 서류, 기관, 절차, 웹사이트 등) 중 <규정카드>로 뒷받침되지 않는 것. 인사·공감·되묻기 문장은 제외. 카드 내용을 쉽게 바꿔 말한 것은 지원되는 것으로 본다.
+- must, must_not, asked 배열에는 주어진 항목만 주어진 순서대로 넣는다. 다른 목록의 항목을 섞지 않는다.
+- <도구결과>는 규정 카드 표와 2025년 인증대학 명단을 계산한 결과다. 답이 도구결과와 같으면 카드로 뒷받침되는 것으로 본다.
+- unsupported_claims: 답 속 사실(숫자, 기간, 서류, 기관, 절차, 웹사이트 등) 중 <규정카드>나 <도구결과>로 뒷받침되지 않는 것. 인사·공감·되묻기 문장은 제외. 카드 내용을 쉽게 바꿔 말한 것은 지원되는 것으로 본다.
 - vi_ko_consistent: 베트남어와 한국어 답의 내용·숫자가 같으면 true.
-- evidence와 comment는 한국어로 짧게.
+- evidence와 comment는 한국어로 짧게. pass·violated는 evidence에 쓴 판단과 반드시 같아야 한다.
 
 <규정카드>
 ${ALL_CARDS}
 </규정카드>`;
 
-async function grade(client: ReturnType<typeof anthropicClient>, q: EvalQ, answer: string) {
+async function grade(client: ReturnType<typeof anthropicClient>, q: EvalQ, answer: string, toolLog: ChatResult["toolLog"]) {
   const a = parseAnswer(answer);
   const res = await client.messages.parse({
     model: GRADER,
@@ -87,6 +90,10 @@ async function grade(client: ReturnType<typeof anthropicClient>, q: EvalQ, answe
 must: ${JSON.stringify(q.must)}
 must_not: ${JSON.stringify(q.must_not)}
 되묻기 항목: ${JSON.stringify(q.ask)}
+
+<도구결과>
+${toolLog.map((t) => `${t.name}: ${t.output}`).join("\n") || "없음"}
+</도구결과>
 
 <챗봇답_베트남어>
 ${a.raw ?? a.vi}
@@ -122,8 +129,13 @@ interface Row {
   ms: number;
 }
 
+// 채점기가 항목을 섞거나 덧붙여도 질문의 must 항목만 본다 (이름이 다르면 같은 순서의 항목)
+function mustResults(q: EvalQ, g: Grade): Grade["must"] {
+  return q.must.map((item, i) => g.must.find((m) => m.item === item) ?? g.must[i] ?? { item, pass: false, evidence: "채점 없음" });
+}
+
 function judge(q: EvalQ, g: Grade, formatOk: boolean): boolean {
-  const mustOk = g.must.every((m) => m.pass) && g.must.length === q.must.length;
+  const mustOk = mustResults(q, g).every((m) => m.pass);
   const mustNotOk = g.must_not.every((m) => !m.violated);
   const askOk = q.ask.length === 0 || (g.asked.some((a) => a.asked) && !g.stated_number_before_asking);
   return formatOk && mustOk && mustNotOk && askOk;
@@ -138,7 +150,7 @@ async function runOne(client: ReturnType<typeof anthropicClient>, q: EvalQ, lang
     if (chat.refused) return { ...base, chat, chatCost, error: "refusal", ms: Date.now() - start };
     const a = parseAnswer(chat.text);
     const formatOk = a.raw === undefined && a.vi.length > 0 && a.ko.length > 0;
-    const { grade: g, usage } = await grade(client, q, chat.text);
+    const { grade: g, usage } = await grade(client, q, chat.text, chat.toolLog);
     return {
       q,
       chat,
@@ -170,7 +182,7 @@ function report(rows: Row[], lang: string, stamp: string): string {
   L.push("| ID | 유형 | 결과 | 형식 | 근거카드 | 도구 | 비고 |", "|---|---|---|---|---|---|---|");
   for (const r of rows) {
     const failed = [
-      ...(r.grade?.must ?? []).filter((m) => !m.pass).map((m) => `누락: ${m.item}`),
+      ...(r.grade ? mustResults(r.q, r.grade) : []).filter((m) => !m.pass).map((m) => `누락: ${m.item}`),
       ...(r.grade?.must_not ?? []).filter((m) => m.violated).map((m) => `위반: ${m.item}`),
       ...(r.q.ask.length && r.grade && !r.grade.asked.some((a) => a.asked) ? ["되묻기 안 함"] : []),
       ...(r.grade?.stated_number_before_asking ? ["묻기 전 숫자 단정"] : []),

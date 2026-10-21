@@ -18,8 +18,9 @@ function section(text: string, tag: string): string | undefined {
 }
 
 export function parseAnswer(text: string): ParsedAnswer {
-  const vi = section(text, "vi");
   const ko = section(text, "ko");
+  // <vi> 태그만 빠뜨린 답: <ko> 앞부분을 베트남어로 본다
+  const vi = section(text, "vi") ?? (ko !== undefined ? text.slice(0, text.indexOf("<ko>")).replace(/<\/?vi>/g, "").trim() || undefined : undefined);
   const cards = (section(text, "cards") ?? "")
     .split(/[,\s]+/)
     .map((s) => s.trim())

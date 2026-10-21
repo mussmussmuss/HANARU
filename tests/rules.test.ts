@@ -183,6 +183,13 @@ describe("재정 증명 금액 (P11, P12, P13)", () => {
     expect(r.facts.join()).toContain("D-2-4~D-2-8");
   });
 
+  it("박사과정은 소재지를 몰라도 예치기간 면제를 알려준다 (E05)", () => {
+    const r = financeRequirement({ stay: "D-2-4" });
+    expect(r.status).toBe("need_info");
+    expect(r.facts.join()).toContain("3개월");
+    expect(financeRequirement({ stay: "D-2-2" }).facts).toEqual([]);
+  });
+
   it("양도 통장 불인정, TOPIK 4급 면제는 예정 사항 (E06, E49)", () => {
     const c = financeRequirement({ stay: "D-2-2", region: "지방" }).cautions.join();
     expect(c).toContain("양도한 통장");

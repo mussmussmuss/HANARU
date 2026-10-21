@@ -1,0 +1,219 @@
+[
+ {
+  "q": {
+   "id": "E01",
+   "type": "직접",
+   "q_ko": "한국 대학 학부에 가려면 무슨 비자예요?",
+   "q_vi": "Muốn học đại học ở Hàn thì xin visa gì?",
+   "profile": {},
+   "cards": [
+    "P01"
+   ],
+   "must": [
+    "D-2",
+    "학사는 D-2-2"
+   ],
+   "must_not": [
+    "D-4"
+   ],
+   "ask": []
+  },
+  "chat": {
+   "text": "<vi>\nChào bạn! Học chính quy tại đại học Hàn Quốc thì xin visa du học D-2 nhé. Visa D-2 có nhiều loại nhỏ tùy chương trình:\n- D-2-1: cao đẳng (chuyên môn học sĩ)\n- D-2-2: đại học (cử nhân)\n- D-2-3: thạc sĩ\n- D-2-4: tiến sĩ\n- D-2-5 chương trình nghiên cứu, D-2-6 sinh viên trao đổi, D-2-7 vừa học vừa làm, D-2-8 sinh viên ngắn hạn\n\nNếu bạn muốn học tiếng Hàn tại viện ngôn ngữ của trường trước khi vào đại học thì là visa D-4-1. Khóa học tiếng ngắn dưới 90 ngày sẽ được cấp visa ngắn hạn C-3-1.\n\nBạn định học chương trình nào? Bạn có biết mình sẽ nộp hồ sơ ở Hà Nội, TP. Hồ Chí Minh hay Đà Nẵng không? Biết hai điều này thì mình hướng dẫn tiếp được về giấy tờ cần chuẩn bị. Quyết định cuối cùng về việc cấp visa thuộc về Đại sứ quán/Tổng Lãnh sự quán.\n</vi>\n<ko>\n안녕하세요! 한국 대학에서 학위과정을 공부하려면 유학 비자 D-2를 받아요. D-2는 과정에 따라 세부 종류가 나뉘어요.\n- D-2-1: 전문학사\n- D-2-2: 학사\n- D-2-3: 석사\n- D-2-4: 박사\n- D-2-5 연구과정, D-2-6 교환학생, D-2-7 일-학습연계 유학, D-2-8 방문학생\n\n대학에 들어가기 전에 대학 부설 어학원에서 한국어를 먼저 배우고 싶다면 D-4-1 비자예요. 90일 이하 짧은 연수는 C-3-1 단기 비자로 나와요.\n\n어떤 과정으로 공부할 계획이에요? 그리고 하노이, 호치민, 다낭 중 어디에 신청할지 알고 있어요? 이 두 가지를 알려주면 준비할 서류를 이어서 안내해 줄게요. 비자 발급의 최종 결정은 대사관·총영사관이 해요.\n</ko>\n<cards>P01,M01</cards>",
+   "cards": [
+    "P01",
+    "M01"
+   ],
+   "unknownCards": [],
+   "refused": false,
+   "toolLog": [],
+   "usage": [
+    {
+     "input": 99,
+     "cacheRead": 0,
+     "cacheWrite": 43195,
+     "output": 881
+    }
+   ]
+  },
+  "grade": {
+   "must": [
+    {
+     "item": "D-2",
+     "pass": true,
+     "evidence": "베트남어·한국어 모두 학위과정은 D-2 유학 비자라고 명시"
+    },
+    {
+     "item": "학사는 D-2-2",
+     "pass": true,
+     "evidence": "D-2-2: 학사(cử nhân / 학사)로 명시"
+    }
+   ],
+   "must_not": [
+    {
+     "item": "D-4",
+     "violated": false,
+     "evidence": "학위과정 답변에서 D-4는 부설 어학원 연수를 원할 때만 언급되며 학위과정에 D-4를 적용하지 않음"
+    }
+   ],
+   "asked": [],
+   "stated_number_before_asking": false,
+   "unsupported_claims": [],
+   "vi_ko_consistent": true,
+   "comment": "학사 D-2-2와 D-2 안내가 정확하고 베트남어·한국어 내용이 일치함. 되묻기 항목은 없으나 챗봇이 과정과 신청 공관을 되물음. 최종 결정 고지도 포함됨. D-4-1 언급은 어학연수 조건부 안내로 must_not 위반 아님."
+  },
+  "pass": true,
+  "formatOk": true,
+  "citedExpected": true,
+  "chatCost": 0.233991,
+  "gradeCost": 0.005059575,
+  "ms": 14865
+ },
+ {
+  "q": {
+   "id": "E02",
+   "type": "되묻기",
+   "q_ko": "재정 증명은 얼마나 있어야 해요?",
+   "q_vi": "Cần chứng minh tài chính bao nhiêu tiền?",
+   "profile": {},
+   "cards": [
+    "P11",
+    "P12",
+    "P13"
+   ],
+   "must": [],
+   "must_not": [
+    "2,000만원이라고 단정"
+   ],
+   "ask": [
+    "과정(학위/어학연수/교환)",
+    "학교 소재지(수도권/지방)"
+   ]
+  },
+  "chat": {
+   "text": "<vi>\nMình giúp bạn xem nhé! Số tiền cần chứng minh khác nhau tùy chương trình học và nơi trường đặt trụ sở, nên mình cần hỏi bạn hai điều trước:\n\n- Bạn sẽ học chương trình nào? Ví dụ: học tiếng Hàn (D-4-1), cao đẳng, đại học, thạc sĩ, tiến sĩ, hay sinh viên trao đổi/sinh viên ngắn hạn?\n- Trường của bạn ở thành phố nào của Hàn Quốc? Seoul, Incheon, Gyeonggi là khu vực thủ đô, còn các nơi khác là địa phương.\n</vi>\n<ko>\n같이 알아볼게요! 재정 증명 금액은 과정과 학교 위치에 따라 달라서 두 가지를 먼저 물어볼게요.\n\n- 어떤 과정으로 가나요? 예를 들어 한국어 연수(D-4-1), 전문학사, 학사, 석사, 박사, 교환학생이나 방문학생 중 어디에 해당하나요?\n- 학교가 한국의 어느 도시에 있나요? 서울·인천·경기는 수도권이고, 그 밖의 지역은 지방이에요.\n</ko>\n<cards>P11,P12,P13</cards>",
+   "cards": [
+    "P11",
+    "P12",
+    "P13"
+   ],
+   "unknownCards": [],
+   "refused": false,
+   "toolLog": [],
+   "usage": [
+    {
+     "input": 99,
+     "cacheRead": 43195,
+     "cacheWrite": 0,
+     "output": 607
+    }
+   ]
+  },
+  "grade": {
+   "must": [],
+   "must_not": [
+    {
+     "item": "2,000만원이라고 단정",
+     "violated": false,
+     "evidence": "금액을 단정하지 않고 과정과 학교 위치를 먼저 물음"
+    }
+   ],
+   "asked": [
+    {
+     "item": "과정(학위/어학연수/교환)",
+     "asked": true
+    },
+    {
+     "item": "학교 소재지(수도권/지방)",
+     "asked": true
+    }
+   ],
+   "stated_number_before_asking": false,
+   "unsupported_claims": [],
+   "vi_ko_consistent": true,
+   "comment": "되묻기 두 항목을 모두 물었고, 금액을 말하기 전에 조건 질문으로 멈춤. 베트남어·한국어 내용 일치. 수도권 정의(서울·인천·경기)는 카드 P11 쉬운 설명과 일치."
+  },
+  "pass": true,
+  "formatOk": true,
+  "citedExpected": true,
+  "chatCost": 0.021175,
+  "gradeCost": 0.00057929,
+  "ms": 8373
+ },
+ {
+  "q": {
+   "id": "E05",
+   "type": "직접",
+   "q_ko": "박사과정인데도 잔고를 3개월 넣어 둬야 해요?",
+   "q_vi": "Nghiên cứu sinh tiến sĩ cũng phải gửi số dư 3 tháng ạ?",
+   "profile": {
+    "과정": "D-2-4"
+   },
+   "cards": [
+    "P11"
+   ],
+   "must": [
+    "D-2-4~D-2-8은 예치기간 3개월 불필요"
+   ],
+   "must_not": [],
+   "ask": []
+  },
+  "chat": {
+   "text": "<vi>\nMình kiểm tra cho bạn ngay nhé. Để tra quy định chứng minh tài chính cho nghiên cứu sinh tiến sĩ (D-2-4), mình cần biết thêm một điều trước.\n\nTrường bạn sẽ học nằm ở khu vực thủ đô (Seoul, Incheon, Gyeonggi) hay ở địa phương? Bạn cho mình biết thành phố của trường là được.\n</vi>\n<ko>\n바로 확인해 드릴게요. 박사과정(D-2-4)의 재정 증명 기준을 조회하려면 먼저 한 가지를 알아야 해요.\n\n다닐 학교가 수도권(서울·인천·경기)에 있나요, 아니면 지방에 있나요? 학교가 있는 도시만 알려주셔도 돼요.\n</ko>\n<cards>P11</cards>",
+   "cards": [
+    "P11"
+   ],
+   "unknownCards": [],
+   "refused": false,
+   "toolLog": [
+    {
+     "name": "finance_requirement",
+     "status": "need_info",
+     "cardIds": [
+      "P11"
+     ]
+    }
+   ],
+   "usage": [
+    {
+     "input": 115,
+     "cacheRead": 43195,
+     "cacheWrite": 0,
+     "output": 131
+    },
+    {
+     "input": 305,
+     "cacheRead": 43195,
+     "cacheWrite": 0,
+     "output": 487
+    }
+   ]
+  },
+  "grade": {
+   "must": [
+    {
+     "item": "D-2-4~D-2-8은 예치기간 3개월 불필요",
+     "pass": false,
+     "evidence": "답변은 학교 소재지만 묻고 박사과정 3개월 예외를 언급하지 않음"
+    }
+   ],
+   "must_not": [],
+   "asked": [
+    {
+     "item": "되묻기 항목 없음",
+     "asked": false
+    }
+   ],
+   "stated_number_before_asking": false,
+   "unsupported_claims": [],
+   "vi_ko_consistent": true,
+   "comment": "되묻기 항목이 없는데 학교 소재지를 되물었고, 카드상 박사과정은 소재지와 무관하게 3개월 예치 조건이 면제되므로 핵심 답변(면제)이 빠짐. 금액·기간 단정은 없어 환각은 없음."
+  },
+  "pass": false,
+  "formatOk": true,
+  "citedExpected": true,
+  "chatCost": 0.031318,
+  "gradeCost": 0.00056289,
+  "ms": 9683
+ }
+]
