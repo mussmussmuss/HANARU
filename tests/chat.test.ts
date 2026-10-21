@@ -1,7 +1,7 @@
 // 채팅 API의 안전장치와 답변 형식 파서. 실제 Claude 호출은 하지 않는다.
 import { afterEach, describe, expect, it } from "vitest";
 import cardsData from "@/kb/cards.json";
-import { parseAnswer } from "@/lib/answer";
+import { parseAnswer, questionLang } from "@/lib/answer";
 import { SYSTEM_PROMPT } from "@/lib/prompt";
 import { POST } from "@/app/api/chat/route";
 
@@ -26,6 +26,15 @@ describe("답변 파서", () => {
 
   it("형식을 지키지 않은 답은 원문 그대로", () => {
     expect(parseAnswer("hello").raw).toBe("hello");
+  });
+});
+
+describe("질문 언어 판별 (질문 언어로만 보기)", () => {
+  it("한글이면 ko, 베트남어면 vi, 섞이면 both", () => {
+    expect(questionLang("재정 증명은 얼마나 필요해요?")).toBe("ko");
+    expect(questionLang("TOPIK 4급 있으면 D-2-2 알바 몇 시간이에요?")).toBe("ko");
+    expect(questionLang("Cần chứng minh tài chính bao nhiêu?")).toBe("vi");
+    expect(questionLang("Visa D-2 và D-4 khác nhau thế nào?\nD-2와 D-4는 뭐가 달라요?")).toBe("both");
   });
 });
 
