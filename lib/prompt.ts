@@ -1,7 +1,7 @@
 // 시스템 프롬프트. 카드 전체를 넣고(검색 없음), 항상 같은 순서로 만들어 프롬프트 캐시가 유지되게 한다.
 import { cards, sources, statusRules, type Card } from "@/lib/kb";
 
-function cardText(c: Card): string {
+export function cardText(c: Card): string {
   const lines = [`### ${c.id} ${c.title} [상태: ${c.status}]`];
   if (c.when.length > 0) lines.push(`답하기 전 필요한 조건: ${c.when.join(", ")}`);
   lines.push("규정:", ...c.rule.map((r) => `- ${r}`));

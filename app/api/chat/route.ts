@@ -1,15 +1,12 @@
 // 채팅 API. 브라우저는 대화 기록(텍스트)만 보내고, 서버가 카드 프롬프트 + 도구로 Claude를 부른다.
 // 응답은 NDJSON 스트림: {t:"iteration"} {t:"delta",text} {t:"tool",name} {t:"done",cards} {t:"error",code}
 import Anthropic from "@anthropic-ai/sdk";
-import { getCard } from "@/lib/kb";
-import { parseAnswer } from "@/lib/answer";
-import { SYSTEM_PROMPT } from "@/lib/prompt";
-import { makeTools, type ToolLog } from "@/lib/tools";
+import { anthropicClient } from "@/lib/anthropic";
+import { runChat, type ChatMessage } from "@/lib/chat";
 
 export const runtime = "nodejs";
 export const maxDuration = 120;
 
-const MODEL = "claude-opus-5-5";
 const MAX_TURNS = 40;
 const MAX_USER_CHARS = 1500;
 const MAX_ASSISTANT_CHARS = 8000;
@@ -26,8 +23,6 @@ function rateLimited(ip: string): boolean {
   hits.set(ip, recent);
   return recent.length > LIMIT;
 }
-
-type ChatMessage = { role: "user" | "assistant"; content: string };
 
 function validate(body: unknown): ChatMessage[] | null {
   const msgs = (body as { messages?: unknown })?.messages;
@@ -63,72 +58,17 @@ export async function POST(req: Request) {
   const messages = validate(await req.json().catch(() => null));
   if (!messages) return json(400, { error: "bad_request" });
 
-  const client = new Anthropic();
-  const toolLog: ToolLog = [];
+  const client = anthropicClient();
   const encoder = new TextEncoder();
 
   const stream = new ReadableStream({
     async start(controller) {
       const send = (event: object) => controller.enqueue(encoder.encode(JSON.stringify(event) + "\n"));
-      let finalText = "";
       try {
-        const runner = client.beta.messages.toolRunner({
-          model: MODEL,
-          max_tokens: 16000,
-          thinking: { type: "adaptive" },
-          output_config: { effort: "medium" },
-          system: [{ type: "text", text: SYSTEM_PROMPT, cache_control: { type: "ephemeral" } }],
-          tools: makeTools(toolLog),
-          messages,
-          max_iterations: 6,
-          stream: true,
-          betas: ["server-side-fallback-2026-07-01"],
-          fallbacks: "default",
-        });
-
-        for await (const messageStream of runner) {
-          // 도구를 부른 뒤 새 응답이 시작되면 화면의 글을 새로 쓴다 (최종 답만 남긴다)
-          send({ t: "iteration" });
-          finalText = "";
-          for await (const event of messageStream) {
-            if (event.type === "content_block_delta" && event.delta.type === "text_delta") {
-              finalText += event.delta.text;
-              send({ t: "delta", text: event.delta.text });
-            } else if (event.type === "content_block_start" && event.content_block.type === "tool_use") {
-              send({ t: "tool", name: event.content_block.name });
-            }
-          }
-          const message = await messageStream.finalMessage();
-          const u = message.usage;
-          // 대화 내용은 기록하지 않고 사용량만 남긴다
-          console.log(
-            JSON.stringify({
-              stop: message.stop_reason,
-              in: u.input_tokens,
-              cache_read: u.cache_read_input_tokens,
-              cache_write: u.cache_creation_input_tokens,
-              out: u.output_tokens,
-            }),
-          );
-          if (message.stop_reason === "refusal") {
-            send({ t: "error", code: "refusal" });
-            controller.close();
-            return;
-          }
-          const hasToolUse = message.content.some((b) => b.type === "tool_use");
-          if (message.stop_reason === "max_tokens" && hasToolUse) {
-            throw new Error("tool input truncated at max_tokens");
-          }
-        }
-
-        // 근거 칩: 모델이 적은 카드 ID 중 실제로 있는 것만
-        const cited = parseAnswer(finalText).cards;
-        const cards = cited.filter((id) => getCard(id));
-        if (cards.length !== cited.length) {
-          console.warn(JSON.stringify({ unknown_cards: cited.filter((id) => !getCard(id)) }));
-        }
-        console.log(JSON.stringify({ tools: toolLog }));
-        send({ t: "done", cards });
+        const result = await runChat(client, messages, send);
+        // 대화 내용은 기록하지 않고 사용량과 도구 판정 상태만 남긴다
+        console.log(JSON.stringify({ usage: result.usage, tools: result.toolLog, unknown_cards: result.unknownCards }));
+        send(result.refused ? { t: "error", code: "refusal" } : { t: "done", cards: result.cards });
       } catch (err) {
         console.error(err instanceof Anthropic.APIError ? `API ${err.status}` : err);
         send({ t: "error", code: errorCode(err) });
